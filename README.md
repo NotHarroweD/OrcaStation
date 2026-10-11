@@ -2,7 +2,7 @@
   <img src="assets/logo.png" alt="Orca logo" width="200">
 </p>
 
-# Orca
+# OrcaStation 
 
 **A model-agnostic orchestration workflow for AI-assisted development.**
 Spend your expensive tokens on thinking, not typing.
