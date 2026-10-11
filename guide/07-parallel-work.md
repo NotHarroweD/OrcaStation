@@ -26,9 +26,24 @@ Here T1.3 and T1.4 can run side by side. T2.1 has to wait for both.
    write that down in a spec that finishes before either starts, or quote it in both specs.
 2. **Exclusive file ownership.** Each parallel task lists its allowed files, and no file appears in two of them.
    If two tasks need the same file, they're not parallel.
-3. **Separate branches or working copies.** Each implementer works on its own branch (or its own folder checkout),
+3. **Separate branches or working copies.** Each implementer works on its own branch, ideally in its own folder.
+   Git worktrees are a convenient way to do this: each one checks out a different branch into its own folder,
    so half-finished work never mixes.
 4. **Merge in dependency order,** one at a time, running the checks after each merge.
+
+## File ownership is a shortcut, not the goal
+
+Exclusive file ownership is a stand-in for the real goal: tasks that can't interfere with each other.
+Two tasks can touch different files and still be tightly coupled. Before running tasks in parallel, ask:
+
+1. Do they share state?
+2. Do they share an interface?
+3. Does one rely on the other's behavior?
+4. Can each be tested on its own?
+5. Can each be merged on its own?
+
+If any answer is yes, run them in sequence, or define the shared piece first. Wait for every task in a batch to finish
+and pass review before integrating, and let one owner (the orchestrator, or you) do the merging.
 
 ## Avoiding deadlock
 

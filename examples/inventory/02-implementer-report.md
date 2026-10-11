@@ -9,15 +9,11 @@ FILES: src/inventory.py
 COMMITS: feat(inventory): add stack limits
 RED: 2 failed (test_overflow_splits_stack, test_full_inventory_raises)
 GREEN: 2 passed
-BREAKS:
-  | break                     | test that failed          | code restored |
-  | MAX_STACK changed to 100  | test_overflow_splits_stack | yes           |
-  | rollback removed          | (none; test still passed)  | yes           |
 CHECKS: ./check passed (14 tests, lint clean)
 DEVIATIONS: none
 CONCERNS: none
 ```
 
-At a glance this looks fine. Look closely at the BREAKS table, though. The second break did not make any test fail,
-and the report says so without flagging it as a problem. A reader skimming for STATUS and CHECKS would miss it.
-That's why the reviewer doesn't read this report first.
+This report is convincing. The tests went red, then green. Every check passed. There are no deviations and no concerns.
+Nothing in it hints at a problem, and that is exactly why the reviewer does not read it first, and why the reviewer
+tries to break the code itself.

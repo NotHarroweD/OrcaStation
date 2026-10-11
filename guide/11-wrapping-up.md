@@ -34,8 +34,8 @@ that each start from files over one marathon that slowly loses the plot.
 
 1. Orchestrator reads `handoff.md`, `plan.md`, `decisions.md`.
 2. Orchestrator writes the next spec(s).
-3. Implementer(s) build in fresh sessions, tests first, with deliberate breaks.
-4. Reviewer, in a fresh session, audits the result against the spec.
+3. Implementer(s) build in fresh sessions, tests first.
+4. Reviewer, in a fresh session, audits the result against the spec, including a sanity-break check on the key tests.
 5. Orchestrator accepts, sends back, or rewrites the spec.
 6. Record decisions, update the plan, write the handoff.
 7. Repeat.

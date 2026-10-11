@@ -19,9 +19,9 @@ If no slot is free for the remainder, raise InventoryFullError and leave the inv
 
 ## Tests (write first; they must fail before you implement)
 - adding 50 to a stack of 60 gives stacks of 99 and 11
-  - break: change the limit to 100; this test must fail
+  - fails if: the limit is changed to 100
 - adding when all slots are full raises InventoryFullError AND `stacks` is unchanged afterwards
-  - break: remove the rollback; this test must fail
+  - fails if: the code changes a stack before raising the error
 
 ## Checks
 ./check

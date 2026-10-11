@@ -17,6 +17,10 @@ quietly weakened assertions, scope creep, edge cases nobody wrote down.
 The reviewer can be the same model as the implementer, the same model as the orchestrator, or a different one.
 What matters is that it's a clean session. A different model may catch different things, so mixing is a bonus.
 
+The reviewer is also **read-only**: it reports problems and doesn't fix them. If it fixes things, it becomes a second
+builder and nobody is independently checking the result. (Temporary changes for the sanity-break check, below, are the
+one exception, and they get reverted.)
+
 ## What the reviewer checks
 
 In order:
@@ -28,14 +32,22 @@ In order:
    - the working tree is clean;
    - the commit message matches the spec.
 2. **Does it meet the spec,** including edge cases the spec implies?
-3. **Could each test fail?** The reviewer should try breaking the code in ways the tests ought to catch.
+3. **Sanity-break check:** for the one or two most important tests, make a small temporary change to the code that the
+   test should catch (the spec's "fails if" line is a good guide). Confirm the test fails, then restore the code exactly.
 4. **Defects:** logic errors, unhandled input, leftover debug code, hardcoded values.
 5. **Scope:** anything added that wasn't asked for.
+
+## What the sanity-break check can and can't do
+
+It tests **sensitivity**: if the code changes in a way the test should notice, does the test notice? It's cheap, and it
+catches tests that pass no matter what. It does **not** prove the suite is comprehensive. A test can fail under one planted
+change and still miss bad input, ordering problems, or corrupted state. Read a pass as "this test isn't hollow," not
+"this code is correct." Skip it on small, simple tasks, and use it on the tests that guard the most important behavior.
 
 ## The review prompt
 
 > You are the reviewer. Read AGENTS.md. Here is the spec and here is the result. Do not read any report from
-> the implementer. Your job is to find problems, not to approve. Run the checks yourself and try to break the tests.
+> the implementer. Your job is to find problems, not to approve. Run the checks yourself and run a sanity-break check on the key tests.
 > Write your findings to docs/reviews/REVIEW-003.md in the standard format.
 
 The full template is in `templates/review.md`.
@@ -48,7 +60,7 @@ The reviewer's output goes to the orchestrator, who decides:
 - **Send back** with the specific fixes, in a fresh implementer session.
 - **Rewrite the spec** if the failure is really an ambiguity in the spec.
 
-Reviews that find nothing should say what was tried. "Looks good" isn't a review.
+Reviews that find nothing should say what was tried. Only the orchestrator (or you) merges, and only after a review passes: one owner integrates. "Looks good" isn't a review.
 
 ## Do this
 

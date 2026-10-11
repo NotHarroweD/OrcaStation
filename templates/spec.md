@@ -16,9 +16,9 @@
 
 ## Tests (write first; they must fail before you implement)
 - <Behavior to test>
-  - break: <deliberate change that must make this test fail>
+  - fails if: <a change to the code that this test should catch>
 - <Behavior to test>
-  - break: <deliberate change that must make this test fail>
+  - fails if: <a change to the code that this test should catch>
 
 ## Checks
 <The exact command(s), e.g. ./check>

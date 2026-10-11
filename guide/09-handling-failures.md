@@ -20,11 +20,11 @@ Never just rerun the same spec hoping for a different outcome. Read what happene
 | Many edits, tests rerun repeatedly, no progress | Thrashing | Stop, find the exact failing test, start fresh with it |
 | Ends early with no report | Session gave up mid-task | Start fresh, or ask it to continue once |
 | Touches files it shouldn't | Allowed-files list missing or ignored | Tighten the list; add to out of scope |
-| Tests pass but the reviewer finds bugs | Weak tests | Add breaks; strengthen test requirements |
+| Tests pass but the reviewer finds bugs | Weak tests | Add "fails if" lines; have the reviewer run sanity-break checks |
 | Fails on every attempt | Task too big or too hard for this tier | Split the task, or move up a tier |
 | Can't find things it needs | Spec didn't carry the facts | Quote names, signatures, line references |
 
-## The escalation ladder
+## The escalation rule
 
 ```mermaid
 flowchart TD
@@ -37,6 +37,7 @@ flowchart TD
     F --> G
 ```
 
+**The escalation rule:** fix the spec, then shrink the task, then restart in a fresh session, and only then move up a tier.
 Always try the cheapest fix first: the spec costs nothing, a fresh session costs a little, a higher tier costs the most.
 
 ## Spec fault or implementer fault?

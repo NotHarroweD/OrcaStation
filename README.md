@@ -1,77 +1,142 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Orca logo" width="200">
+  <img src="assets/logo.png" alt="OrcaStation logo" width="360">
 </p>
 
-# OrcaStation 
+# OrcaStation
 
-**A model-agnostic orchestration workflow for AI-assisted development.**
+**A model-agnostic guide and toolkit for orchestrating AI-assisted development.**
 Spend your expensive tokens on thinking, not typing.
 
 Maintained by the [AI Game Dev](https://aigamedevs.org) community.
 
-[Website](https://aigamedevs.org) · [Discord](https://discord.gg/GGszfGZg8a) · [Guide](guide/README.md) · [Cheat sheet](CHEATSHEET.md) · [Worked example](examples/inventory)
+[Website](https://aigamedevs.org) · [Discord](https://discord.gg/GGszfGZg8a) · [Start here](START.md) · [Guide](guide/README.md) · [Cheat sheet](CHEATSHEET.md) · [Worked example](examples/inventory)
 
-![The Orca loop: orchestrator, implementer, reviewer](assets/hero.svg)
+> OrcaStation is a methodology you follow, not software you install. It is an independent resource and is not affiliated with other software named Orca.
+
+![The OrcaStation loop: orchestrator, implementer, reviewer](assets/hero.svg)
 
 ---
 
-## The idea in 30 seconds
+## What is orchestration?
 
-Most people use their most capable (and most expensive) model for everything: planning, writing code, fixing bugs. That burns through token budgets fast, and it usually isn't necessary.
+Orchestration means splitting a development job across **separate AI sessions with distinct roles**
+(planning, building, reviewing) that are coordinated through **written handoffs** (specs, reports, reviews)
+instead of one long conversation. Each job gets the level of capability it actually needs, and nothing is trusted
+just because the session that produced it said so.
 
-Orca splits the work into three roles:
+## The problem with doing everything in one session
+
+Using a single model in a single session is simple, and it works for small jobs. On bigger ones, these problems
+tend to show up:
+
+- **One capability level for every task.** Planning and untangling ambiguity take a lot of capability. Following a clear
+  instruction takes much less. A single top-tier session pays top-tier prices for both, which burns tokens without
+  extra benefit on the easy parts.
+- **The builder grades its own work.** When the same session writes the code and the tests, it can write tests that pass
+  no matter what the code does, and it tends to agree with its own reasoning. The result can be a test suite that
+  always passes without properly evaluating anything.
+- **Bloated context.** A long session fills with history that the current task doesn't need. Important details get
+  diluted, decisions get forgotten, and quality can drift.
+- **State trapped in the conversation.** Decisions and plans live in chat. When the session ends or restarts, they're gone.
+
+## How OrcaStation addresses them
+
+| Problem | What OrcaStation does |
+|---|---|
+| One capability level for everything | Match the tier to the task: your strongest model plans and writes specs, and the lightest model that reliably works builds ([Choosing tiers](guide/12-choosing-tiers.md)) |
+| Builder grades itself | An independent reviewer in a fresh session checks the result against the spec |
+| Bloated context | A fresh session per task, given only the spec and facts it needs |
+| Lost state | Plans, specs, decisions, and handoffs live in files, not chat |
+| Vague tasks | Small, specific specs, with parallel work only when files and interfaces don't collide |
+
+> These are benefits observed in practice, not guarantees. Lighter models need tighter specs, and writing good specs
+> costs orchestrator tokens. The guide covers the tradeoffs.
+
+## The three roles
 
 | Role | Job | Tier |
-|------|-----|-------|
+|------|-----|------|
 | **Orchestrator** | Plans the project and writes precise specs | Most capable tier |
-| **Implementer** | Follows one spec and builds it | Cheapest tier that does it reliably |
+| **Implementer** | Follows one spec and builds it | Lightest tier that does it reliably |
 | **Reviewer** | Independently audits the result against the spec | Strong tier, **fresh session** |
 
-The top tier rarely writes the implementation. It writes the *instructions* for it.
+## When to use it, and when not to
+
+**A good fit**
+- Multi-step features and larger changes
+- Work where correctness matters
+- Projects that span many sessions
+- Tasks you want to run in parallel
+
+**Probably overkill**
+- Typo fixes, renames, and tiny UI tweaks
+- One-off scripts
+- Early exploration, when you don't yet know what you want
+
+**Outside its scope**
+- It doesn't decide what you should build or replace your own judgment.
+- It isn't a framework, an app, or an agent runtime.
+- It doesn't cover deployment or security audits.
+
+Orchestration has overhead. Use it when that overhead pays for itself.
+
+## Start in five steps (Lite)
+
+1. In a strong model's session (the orchestrator), describe your project and ask for a short plan.
+2. Ask it for a small spec for the first task: what to build, which files, and how to check it.
+3. Give that spec to a **fresh session** (the implementer). If you're new, use a model one step above the cheapest.
+4. Give the spec and the result to **another fresh session** (the reviewer) and ask it to find problems.
+5. Fix what it finds, then repeat for the next task.
+
+Want copy-paste prompts for each step, or an agent-guided start? Use [START.md](START.md).
+
+When you're ready for more, the full workflow adds `AGENTS.md`, branches, saved reports, parallel tasks, and metrics.
+Start with the [guide](guide/README.md).
 
 ## The six principles
 
-1. **One outcome per spec.** Small, focused tasks finish more often and are easier to verify. If a spec feels big, split it.
-2. **Specs carry the facts.** Include the names, signatures, constraints, and decisions the implementer needs. Don't make it hunt for context or guess.
-3. **Tests first, and prove they can fail.** Write the test, watch it fail for the right reason, then implement. Deliberately break the code once to confirm the test catches it.
-4. **Define "done" mechanically.** A checklist anyone can verify: the checks pass, only the intended files changed, no tests were quietly removed.
-5. **Never let the builder grade itself.** A separate session reviews the output against the spec, without seeing the builder's own summary.
-6. **Fresh session per task, state in files.** Plans, specs, and decisions live in the repo, not in chat history. Any session can be dropped and restarted without losing progress.
-
-## Why it works
-
-- **Token efficiency:** implementation is the bulk of token use, and it moves to cheaper tiers.
-- **Fewer errors:** narrow specs leave less room for improvisation.
-- **Less drift:** clean sessions working from written specs don't accumulate a long, muddy history.
-- **Independent review:** a reviewer with fresh context doesn't share the implementer's assumptions.
-- **Parallelism:** well-scoped specs with clear file ownership can run in several sessions at once.
-
-> These are benefits observed in practice, not guarantees. Cheaper tiers need tighter specs, and writing good specs costs orchestrator tokens. The guide covers the tradeoffs.
+1. **One outcome per spec.**
+2. **Specs carry the facts.**
+3. **Tests first, and check they can fail.**
+4. **Define "done" mechanically.**
+5. **Never let the builder grade itself.**
+6. **Fresh session per task, state in files.**
 
 ## Works with anything
 
-Orca doesn't depend on a specific model, vendor, or tool. If your setup lets you run more than one session or agent, you can use it.
+Bring your own models and subscriptions. OrcaStation doesn't depend on a specific model, vendor, or tool. It works with chat apps,
+command-line and IDE agents, and parallel-agent environments, as long as your setup lets you run more than one session.
+For dated examples with Claude and ChatGPT models, see [model examples](reference/model-examples.md).
+
+## FAQ
+
+**Do I need several different models?** No. One model in separate sessions still gives you fresh context and independent review.
+Using different tiers is what adds the token savings.
+
+**Do I need special software?** No. It's a set of files and a way of working.
+
+**Is it only for game development?** No. It comes from a game dev community and the examples are game-flavored, but the method suits any software project.
+
+**How much will I save?** It depends on your work, so we don't promise numbers. Chapter 10 shows how to measure your own.
 
 ## What's in this repo
 
 ```
-Orca/
+OrcaStation/
 ├── README.md        You are here
+├── START.md         Entry point with copy-paste playbooks
+├── playbooks/       Step-by-step modes: Lite, new project, adopt, choose models
+├── CHEATSHEET.md    One-page summary
 ├── AGENTS.md        Drop-in instructions for agents
 ├── guide/           The full guide, chapter by chapter
 ├── templates/       Spec and review templates
-├── assets/          Diagrams used in the guide
-└── examples/        A worked example, from spec to accepted
+├── examples/        A worked example, from spec to accepted
+├── reference/       Dated model examples
+└── assets/          Logo and diagrams
 ```
 
-## Quickstart
-
-1. Copy `AGENTS.md` and the `templates/` folder into your project.
-2. Start an **orchestrator** session. Describe your project and have it produce a phased plan (`docs/plan.md`).
-3. For the **next phase only**, have the orchestrator write a spec per task using `templates/spec.md`. Later phases get specced after earlier ones finish, since results change the plan.
-4. Hand each spec to an **implementer** session on a cheaper tier.
-5. Open a **fresh reviewer** session. Give it the spec and the result, and ask it to find problems.
-6. Return the findings to the orchestrator. Fix, then move to the next phase.
+In the [worked example](examples/inventory), every automated check passed and the work was still wrong.
+An independent review caught it.
 
 ## Status
 
@@ -80,15 +145,15 @@ First full draft. Start with the [guide index](guide/README.md), or jump to the 
 ## Community
 
 Questions, results, and war stories are welcome in the [AI Game Dev Discord](https://discord.gg/GGszfGZg8a).
-If you try Orca on a real project, we'd love to hear how it went.
+If you try OrcaStation on a real project, we'd love to hear how it went.
 
 ## Contributors
 
-Thank you to everyone who has tested Orca and shared feedback. Your input directly improves the benefit this resource provides to the community.
+Thank you to everyone who has tested OrcaStation and shared feedback. Your input directly improves the benefit this resource provides to the community.
 
 - **ShinyStarSam**: First Tester/Feedback contributor.
 
-Want to be listed? Try Orca on a real project and share what worked and what didn't, in the [Discord](https://discord.gg/GGszfGZg8a) or as a GitHub issue.
+Want to be listed? Try OrcaStation on a real project and share what worked and what didn't, in the [Discord](https://discord.gg/GGszfGZg8a) or as a GitHub issue.
 
 ## License
 

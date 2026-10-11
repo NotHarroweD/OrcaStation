@@ -6,7 +6,7 @@
 
 ```
 your-project/
-├── AGENTS.md          The workflow rules (from the Orca repo)
+├── AGENTS.md          The workflow rules (from the OrcaStation repo)
 ├── check              One command that runs all checks
 ├── src/               Your code
 ├── tests/             Your tests
@@ -24,7 +24,7 @@ Every file in `docs/` exists so that a brand-new session can pick up exactly whe
 ## Step by step
 
 1. **Create the repo** and commit an empty project skeleton.
-2. **Add `AGENTS.md`** from the Orca repo. Don't edit it yet. Use it as is until you know what you'd change.
+2. **Add `AGENTS.md`** from the OrcaStation repo. Don't edit it yet. Use it as is until you know what you'd change.
 3. **Create the `check` command.** Even with no tests yet, it should run and pass. Commit it.
 4. **Create the empty `docs/` files.** A heading and a sentence each is enough.
 5. **Decide on branches.** The simplest rule: one branch per task, merged only after review passes.
@@ -42,6 +42,16 @@ Agents need clear git rules, or they'll improvise. These are the defaults in `AG
 - **You merge after review passes.** Merging is a decision, so it stays with you or the orchestrator.
 
 If you'd rather use other conventions, change them in `AGENTS.md` once, and every spec inherits them.
+
+## If your tool looks for a different filename
+
+Some tools look for their own instruction filename instead of `AGENTS.md`. If yours does, add a one-line file with that
+name that says to follow `AGENTS.md`, rather than keeping two copies in sync.
+
+## Choosing models
+
+Create `docs/models.md` listing which model and effort setting fills each role. [Chapter 12](12-choosing-tiers.md)
+explains how to choose and includes a template.
 
 ## Starting your sessions
 

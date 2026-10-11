@@ -1,6 +1,6 @@
 # Chapter 6: Implementing
 
-**In one line:** the implementer's job is to follow the spec exactly, prove its tests work, and report honestly.
+**In one line:** the implementer's job is to follow the spec exactly, watch its tests fail before it builds, and report honestly.
 
 ## Starting the session
 
@@ -15,17 +15,18 @@ Nothing else. No extra context, no conversation history. The spec is the whole j
 1. **Read the whole spec** before touching anything.
 2. **Write the tests first** and run them. They should fail, and for the right reason.
 3. **Implement** until they pass.
-4. **Break it on purpose.** For each break the spec names, introduce it, confirm the matching test fails,
-   then restore the code exactly.
-5. **Run every check** the spec lists.
-6. **Commit** only the allowed files, with the exact message from the spec.
-7. **Report:** save it to `docs/reports/REPORT-<id>.md` in the fixed format from `AGENTS.md`, commit it separately,
+4. **Run every check** the spec lists.
+5. **Commit** only the allowed files, with the exact message from the spec.
+6. **Report:** save it to `docs/reports/REPORT-<id>.md` in the fixed format from `AGENTS.md`, commit it separately,
    and paste the same text as the final message. The orchestrator reads the file, not the chat.
 
-## Why break the code on purpose
+## Why tests first
 
-A test that can't fail proves nothing. Cheap models sometimes write tests that pass no matter what.
-One deliberate break per test is a quick way to catch that, and it costs very little.
+A test that can't fail proves nothing, and cheaper models sometimes write tests that pass no matter what.
+Watching a test fail before the code exists is a basic guard: it shows the test notices a missing feature.
+
+A stronger check, the **sanity-break check**, belongs to the **reviewer**, not the implementer (Chapter 8).
+Keeping it with the reviewer means the builder isn't marking its own homework, and it keeps this chapter simple.
 
 ## When the implementer should stop
 
@@ -40,9 +41,11 @@ A BLOCKED report with a clear reason is far cheaper than an hour of flailing.
 
 ## Choosing the tier
 
-Start with the cheapest tier you have and see if it finishes reliably.
+If you're new, start the implementer one step above the cheapest tier so you can tell spec problems from model problems,
+then tune down. [Chapter 12](12-choosing-tiers.md) covers this in detail. Over time, you're looking for the lightest tier
+that finishes reliably.
 
-- If tasks pass on the first try, you may be able to go cheaper still.
+- If tasks pass on the first try, you may be able to go lighter still.
 - If it fails repeatedly on well-written specs, move up one tier.
 - If it fails on *poorly* written specs, fix the spec, not the tier.
 

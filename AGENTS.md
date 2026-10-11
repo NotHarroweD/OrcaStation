@@ -1,6 +1,6 @@
-# AGENTS.md: Orca workflow
+# AGENTS.md: OrcaStation workflow
 
-This project uses the Orca workflow: work is split into three roles, each in its own session.
+This project uses the OrcaStation workflow: work is split into three roles, each in its own session.
 **Your role is stated at the start of your session.** If it isn't, ask which role you have before doing anything.
 Follow the "All roles" section plus the section for your role.
 
@@ -26,6 +26,7 @@ State lives in these files, not in chat. Read what you need from them. Never rel
   commands (hard reset, clean, rebase, stash) unless the owner explicitly says so.
 - Never install software, download files, or send project contents to outside services unless a spec says to.
 - Never put secrets, keys, or personal data in files, commits, or logs.
+- Use the smallest sufficient context: read what your task needs, not the whole project history.
 - Don't expand scope. If you find something worth doing that isn't in the spec, note it. Don't do it.
 - If something is unclear or contradicts the code, say so plainly. Don't guess silently.
 - Keep your replies short and concrete. Say what you did, what you found, and what's left.
@@ -38,7 +39,7 @@ State lives in these files, not in chat. Read what you need from them. Never rel
 - **One commit per spec**, using the exact message the spec gives.
 - Reports and reviews are saved in `docs/` and committed **separately** from the work, with their own messages:
   `docs: report for SPEC-003` and `docs: review for SPEC-003`. They are the one exception to a spec's allowed-files list.
-- The orchestrator merges a branch into main only after its review passes.
+- **One owner integrates.** Only the orchestrator (or the human owner) merges a branch into main, and only after its review passes.
 
 ---
 
@@ -63,7 +64,7 @@ so specs written far ahead go stale.
 - One outcome per spec. If it feels big, split it.
 - Include the facts the implementer needs: names, signatures, constraints, relevant decisions. Don't send it hunting.
 - List the allowed files. Anything else is off limits.
-- Name the tests to write, and for each test, one deliberate break that must make it fail.
+- Name the tests to write, and for the key ones add a `fails if` line: a change to the code that the test should catch.
 - List the exact checks to run, and the commit message to use.
 - State what is explicitly out of scope.
 
@@ -85,11 +86,9 @@ You build exactly what one spec describes.
 2. Touch only the files the spec allows.
 3. **Tests first.** Write the tests, run them, and confirm they fail for the expected reason.
 4. Implement until the tests pass.
-5. **Prove the tests can fail.** For each deliberate break the spec names, introduce it, confirm the test fails, then
-   restore the code exactly.
-6. Run every check the spec lists. Fix until they pass.
-7. Commit only the allowed files, with the message the spec gives.
-8. Don't refactor, add extras, or "improve" anything outside the spec.
+5. Run every check the spec lists. Fix until they pass.
+6. Commit only the allowed files, with the message the spec gives.
+7. Don't refactor, add extras, or "improve" anything outside the spec.
 
 **When to stop:** if the same failure survives three fix attempts, or the spec is impossible or contradicts the code,
 stop. Don't make a partial commit. Report BLOCKED or NEED_INFO.
@@ -105,7 +104,6 @@ FILES: every file changed, one per line.
 COMMITS: each commit and its message.
 RED: failing test output seen before implementing.
 GREEN: passing output after.
-BREAKS: table of break | test that failed | code restored (yes/no).
 CHECKS: result of each required check.
 DEVIATIONS: any difference from the spec and why, or "none".
 CONCERNS: anything the reviewer should look at, or "none".
@@ -117,6 +115,8 @@ CONCERNS: anything the reviewer should look at, or "none".
 
 You are independent. You did not write this code and you don't share the implementer's assumptions.
 Your job is to find problems, not to approve.
+You are read-only on the code: report problems, don't fix them. Temporary changes for the sanity-break check
+are the one exception, and you must revert them exactly.
 
 **You receive:** the spec and the actual result (the code changes and the project). Do **not** rely on the
 implementer's own report or summary. Judge the work itself.
@@ -129,7 +129,9 @@ implementer's own report or summary. Judge the work itself.
    - The working tree is clean.
    - The commit message matches the spec.
 2. **Meets the spec:** does the result actually do what the spec asks, including edge cases it implies?
-3. **Test quality:** could each test fail? Try breaking the code in a way the test should catch.
+3. **Test quality (sanity-break check):** pick the one or two most important tests. For each, make a small temporary
+   change to the code that the test should catch (the spec's `fails if` line is a good guide), confirm the test fails,
+   then restore the code exactly. This checks sensitivity, not coverage.
    Look for tests that assert nothing, or that restate the implementation.
 4. **Defects:** logic errors, missed edge cases, unsafe handling of input, leftover debug code, hardcoded values.
 5. **Scope:** anything added that the spec didn't ask for.

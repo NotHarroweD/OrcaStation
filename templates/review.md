@@ -14,7 +14,7 @@ You have the spec and the actual result. Do not rely on any report from the impl
 <Does the result do what the spec asks, including implied edge cases?>
 
 ## Test quality
-<Could each test fail? Which breaks did you try, and what happened?>
+<Sanity-break check on the one or two most important tests: what change did you make, did the test fail, and did you restore the code exactly?>
 
 ## Defects
 <Logic errors, unhandled input, leftover debug code, hardcoded values.>

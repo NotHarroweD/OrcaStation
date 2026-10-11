@@ -1,4 +1,4 @@
-# Orca cheat sheet
+# OrcaStation cheat sheet
 
 One page. Print it, pin it, or keep it open next to your sessions.
 
@@ -12,7 +12,7 @@ Then: fix, or move on.
 
 1. **One outcome per spec.** If it feels big, split it.
 2. **Specs carry the facts.** No hunting, no guessing.
-3. **Tests first, and prove they can fail.** Break the code once to confirm the test notices.
+3. **Tests first, and check they can fail.** The reviewer breaks the code once to confirm the test notices.
 4. **Define "done" mechanically.** A checklist, not a feeling.
 5. **Never let the builder grade itself.** A fresh reviewer sees the result, not the summary.
 6. **Fresh session per task, state in files.**
@@ -25,7 +25,7 @@ Then: fix, or move on.
 
 ## A good spec has
 
-Why · Allowed files · Task · Facts · Tests + breaks · Checks · Commit message · Report location · Out of scope
+Why · Allowed files · Task · Facts · Tests + fails-if lines · Checks · Commit message · Report location · Out of scope
 
 ## Definition of done
 
@@ -57,7 +57,7 @@ One branch per task · one commit per spec, exact message · reports and reviews
 |---|---|
 | Different results every run | Ambiguous spec |
 | Many edits, no progress | Thrashing: stop, restart with the exact failing test |
-| Tests pass, reviewer finds bugs | Weak tests: add breaks |
+| Tests pass, reviewer finds bugs | Weak tests: add `fails if` lines; reviewer runs sanity-breaks |
 | Touches wrong files | Allowed-files list missing or loose |
 | Fails every time | Task too big for this tier |
 
@@ -69,4 +69,4 @@ forgetting to record decisions
 
 ## Learn more
 
-[Guide](guide/README.md) · [Worked example](examples/inventory) · [AGENTS.md](AGENTS.md)
+[Start here](START.md) · [Guide](guide/README.md) · [Worked example](examples/inventory) · [AGENTS.md](AGENTS.md)

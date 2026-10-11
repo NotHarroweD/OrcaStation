@@ -16,7 +16,7 @@ Every spec has these parts (the template is in `templates/spec.md`):
 3. **Allowed files:** the only files it may touch
 4. **Task:** exactly what to build
 5. **Facts:** names, signatures, constants, and decisions it needs (quoted from `decisions.md`)
-6. **Tests:** which tests to write, and one deliberate break per test that must make it fail
+6. **Tests:** which tests to write, and for the key ones, a "fails if" line saying what change to the code should make them fail
 7. **Checks:** the exact commands to run
 8. **Commit:** the exact message
 9. **Report:** where the implementer saves its report
@@ -53,9 +53,9 @@ If no slot is free for the remainder, raise InventoryFullError and change nothin
 
 ## Tests (write first; they must fail before you implement)
 - adding 50 to a stack of 60 gives stacks of 99 and 11
-  - break: change the limit to 100, this test must fail
+  - fails if: the limit is changed to 100
 - adding when all slots are full raises InventoryFullError and leaves slots unchanged
-  - break: remove the "change nothing" rollback, this test must fail
+  - fails if: the code changes a stack before raising the error
 
 ## Checks
 ./check
@@ -74,7 +74,7 @@ Weight limits, saving, any refactoring.
 
 - **Every ambiguity is closed.** The limit, the overflow behavior, and the error are all named.
 - **Facts replace searching.** The implementer doesn't need to hunt for context.
-- **Tests come with breaks.** "Tests pass" means something because each test has been shown capable of failing.
+- **Tests say what they guard.** Each key test states what change should make it fail, so the reviewer can check that it really would.
 - **Boundaries are explicit.** Allowed files and out-of-scope lines prevent drift.
 
 ## Write specs just in time

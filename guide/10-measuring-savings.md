@@ -18,6 +18,10 @@ It's easy to feel like this works. It's more useful to know. A few numbers are e
 
 A spreadsheet is plenty. One row per task.
 
+**Where to get token numbers:** most providers show usage on an account or usage page, and some tools show it per session.
+Check it before and after each session, or note the figure afterward, so you can record tokens per role. Many plans have
+rolling or weekly usage limits, so it also helps to know which role is using the most.
+
 ## What to look at
 
 - **Tokens by role.** Is the orchestrator really a small share of the total?
