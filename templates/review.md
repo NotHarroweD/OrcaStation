@@ -14,7 +14,7 @@ You have the spec and the actual result. Do not rely on any report from the impl
 <Does the result do what the spec asks, including implied edge cases?>
 
 ## Test quality
-<Sanity-break check on the one or two most important tests: what change did you make, did the test fail, and did you restore the code exactly?>
+<For each key test: would it really notice if the behavior broke? Compare it with the spec's fails-if line.>
 
 ## Defects
 <Logic errors, unhandled input, leftover debug code, hardcoded values.>
@@ -22,8 +22,12 @@ You have the spec and the actual result. Do not rely on any report from the impl
 ## Scope
 <Anything added that the spec did not ask for.>
 
+## Spec concerns
+<Evidence that the requirement or its assumptions are wrong or incomplete, or "none". Flag it; don't rewrite it.>
+
 ## Result
 VERDICT: PASS | PASS_WITH_NOTES | FAIL
 BLOCKING: <issues that must be fixed, each with file and location>
 NOTES: <non-blocking observations>
+SPEC CONCERNS: <summary, or none>
 CHECKS RUN: <what you ran and the results>

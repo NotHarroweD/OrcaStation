@@ -1,4 +1,4 @@
-# Chapter 10: Measuring savings
+# Chapter 11: Measuring savings
 
 **In one line:** track a few simple numbers so you know what the workflow is actually doing for you.
 
@@ -48,8 +48,21 @@ Keep the tasks as similar as you can, and run enough of them that one odd result
 - **Separate infrastructure failures** (timeouts, rate limits) from real task failures, since they say nothing about your spec.
 - **Bigger tasks fail more** for reasons beyond the model. Compare like with like.
 
+## A fuller experiment (optional)
+
+To see whether OrcaStation helps on your kind of work, run similar tasks four ways:
+
+- **A. Single session:** one capable model plans, builds, and checks its own work.
+- **B. OrcaStation, one model:** separate orchestrator, implementer, and reviewer sessions, all the same model.
+- **C. OrcaStation, mixed tiers:** stronger planning and review, lighter implementation.
+- **D. Mixed tiers without independent review:** a way to see what the review stage adds.
+
+Measure the **total** workflow, not just the implementer: tokens or cost across planning, review, failed attempts and fixes,
+plus elapsed time, how much human correction was needed, the rate of tasks accepted, and defects found after acceptance.
+Fewer tokens isn't better value if the result needs more of your time to fix.
+
 ## Do this
 
 Make the spreadsheet. Fill it in for your next five tasks. Look for one thing you'd change.
 
-**Next:** [Chapter 11: Wrapping up](11-wrapping-up.md)
+**Next:** [Chapter 12: Wrapping up](12-wrapping-up.md)

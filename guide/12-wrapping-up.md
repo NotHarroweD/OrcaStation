@@ -1,4 +1,4 @@
-# Chapter 11: Wrapping up
+# Chapter 12: Wrapping up
 
 **In one line:** keep state in files, keep sessions short, and avoid the handful of mistakes that sink most attempts.
 
@@ -35,7 +35,7 @@ that each start from files over one marathon that slowly loses the plot.
 1. Orchestrator reads `handoff.md`, `plan.md`, `decisions.md`.
 2. Orchestrator writes the next spec(s).
 3. Implementer(s) build in fresh sessions, tests first.
-4. Reviewer, in a fresh session, audits the result against the spec, including a sanity-break check on the key tests.
+4. Reviewer, in a fresh session, audits the result against the spec, including whether each key test would notice a real problem.
 5. Orchestrator accepts, sends back, or rewrites the spec.
 6. Record decisions, update the plan, write the handoff.
 7. Repeat.
@@ -43,7 +43,7 @@ that each start from files over one marathon that slowly loses the plot.
 ## Where to go next
 
 - Run the loop on a real project. The first one is for learning; the second is where it pays off.
-- Track your numbers (Chapter 10) and tune your spec size and tier choices.
+- Track your numbers (Chapter 11) and tune your spec size and tier choices.
 - Adapt `AGENTS.md` to your own conventions once you know what you'd change.
 - Share what you learn with the community.
 

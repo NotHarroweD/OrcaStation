@@ -48,7 +48,7 @@ is what makes it useful. It doesn't need to be a different model, just a differe
 - **Lower token spend:** the expensive tier only writes plans and specs.
 - **Fewer errors:** narrow, written specs leave less room to improvise.
 - **Less drift:** every task starts clean and works from a file, not from a long chat history.
-- **Faster work:** well-scoped specs can run in parallel (Chapter 7).
+- **Faster work:** well-scoped specs can run in parallel (Chapter 8).
 
 These are benefits you'll see in practice, but they aren't automatic. Cheaper models need clearer specs, and
 writing good specs takes effort. The rest of this guide is about doing that well.
@@ -78,7 +78,7 @@ yet know what you want. A normal single session is fine for those. Use OrcaStati
 
 1. **One outcome per spec.**
 2. **Specs carry the facts.**
-3. **Tests first, and check they can fail.**
+3. **Tests first, and make them able to fail.**
 4. **Define "done" mechanically.**
 5. **Never let the builder grade itself.**
 6. **Fresh session per task, state in files.**

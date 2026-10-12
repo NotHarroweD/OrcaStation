@@ -23,9 +23,9 @@
 <circle cx="634" cy="124" r="18" fill="#d97706"/>
 <text x="634" y="130" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
 <text x="620" y="172" font-size="17" font-weight="700">Tests first,</text>
-<text x="620" y="193" font-size="17" font-weight="700">check they can fail</text>
-<text x="620" y="222" font-size="13.5" fill="#475569">A reviewer breaks the code</text>
-<text x="620" y="240" font-size="13.5" fill="#475569">once to confirm the test notices.</text>
+<text x="620" y="193" font-size="17" font-weight="700">make them able to fail</text>
+<text x="620" y="222" font-size="13.5" fill="#475569">Each key test says what should</text>
+<text x="620" y="240" font-size="13.5" fill="#475569">make it fail; reviewers check.</text>
 <rect x="40" y="280" width="260" height="170" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
 <rect x="40" y="280" width="260" height="8" rx="4" fill="#2563eb"/>
 <circle cx="74" cy="324" r="18" fill="#2563eb"/>

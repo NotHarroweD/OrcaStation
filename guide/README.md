@@ -11,12 +11,12 @@ Read the chapters in order the first time. Each one is short and ends with somet
 | 4 | [Planning in phases](04-planning-in-phases.md) | Breaking a project into tasks one session can finish |
 | 5 | [Writing a spec](05-writing-a-spec.md) | The most important skill in the workflow |
 | 6 | [Implementing](06-implementing.md) | Tests first, honest reports, and when to stop |
-| 7 | [Parallel work](07-parallel-work.md) | Running tasks side by side without collisions |
-| 8 | [Adversarial review](08-adversarial-review.md) | Using an independent reviewer to find real problems |
-| 9 | [Handling failures](09-handling-failures.md) | Diagnosing what went wrong and choosing the cheapest fix |
-| 10 | [Measuring savings](10-measuring-savings.md) | Tracking a few numbers and running your own A/B test |
-| 11 | [Wrapping up](11-wrapping-up.md) | Handoffs, common mistakes, and the whole loop on one page |
-| 12 | [Choosing tiers](12-choosing-tiers.md) | Which model and effort setting fits each role, with Claude and ChatGPT examples |
+| 7 | [Choosing tiers](07-choosing-tiers.md) | Which model and effort setting fits each role, with Claude and ChatGPT examples |
+| 8 | [Parallel work](08-parallel-work.md) | Running tasks side by side without collisions |
+| 9 | [Adversarial review](09-adversarial-review.md) | Using an independent reviewer to find real problems |
+| 10 | [Handling failures](10-handling-failures.md) | Diagnosing what went wrong and choosing the cheapest fix |
+| 11 | [Measuring savings](11-measuring-savings.md) | Tracking a few numbers and running your own A/B test |
+| 12 | [Wrapping up](12-wrapping-up.md) | Handoffs, common mistakes, and the whole loop on one page |
 
 ## Also in this repo
 

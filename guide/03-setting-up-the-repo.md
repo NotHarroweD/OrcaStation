@@ -50,7 +50,7 @@ name that says to follow `AGENTS.md`, rather than keeping two copies in sync.
 
 ## Choosing models
 
-Create `docs/models.md` listing which model and effort setting fills each role. [Chapter 12](12-choosing-tiers.md)
+Create `docs/models.md` listing which model and effort setting fills each role. [Chapter 7](07-choosing-tiers.md)
 explains how to choose and includes a template.
 
 ## Starting your sessions

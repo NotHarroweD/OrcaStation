@@ -1,7 +1,7 @@
 # Playbook: Choose models
 
 **For:** deciding which model and effort setting should do which job.
-**Background:** [Chapter 12](../guide/12-choosing-tiers.md) explains the reasoning.
+**Background:** [Chapter 7](../guide/07-choosing-tiers.md) explains the reasoning.
 **Agent:** don't assume which models the user has. Ask, and verify anything that may have changed.
 
 ## Step 1: List what the user has
@@ -37,7 +37,7 @@ and reviewer if the tool allows.
 
 ## Step 4: Confirm and record
 
-Show the user the mapping and adjust it. After approval, write `docs/models.md` (template in Chapter 12), or give
+Show the user the mapping and adjust it. After approval, write `docs/models.md` (template in Chapter 7), or give
 them the table to paste into their notes if they're not using a repo.
 
 ## Step 5: Tune over time

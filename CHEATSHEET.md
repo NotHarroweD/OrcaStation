@@ -12,7 +12,7 @@ Then: fix, or move on.
 
 1. **One outcome per spec.** If it feels big, split it.
 2. **Specs carry the facts.** No hunting, no guessing.
-3. **Tests first, and check they can fail.** The reviewer breaks the code once to confirm the test notices.
+3. **Tests first, and make them able to fail.** Each key test says what should make it fail, and the reviewer checks that it would.
 4. **Define "done" mechanically.** A checklist, not a feeling.
 5. **Never let the builder grade itself.** A fresh reviewer sees the result, not the summary.
 6. **Fresh session per task, state in files.**
@@ -57,7 +57,7 @@ One branch per task · one commit per spec, exact message · reports and reviews
 |---|---|
 | Different results every run | Ambiguous spec |
 | Many edits, no progress | Thrashing: stop, restart with the exact failing test |
-| Tests pass, reviewer finds bugs | Weak tests: add `fails if` lines; reviewer runs sanity-breaks |
+| Tests pass, reviewer finds bugs | Weak tests: add `fails if` lines; reviewer checks tests against them |
 | Touches wrong files | Allowed-files list missing or loose |
 | Fails every time | Task too big for this tier |
 

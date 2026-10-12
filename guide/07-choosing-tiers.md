@@ -1,4 +1,4 @@
-# Chapter 12: Choosing tiers
+# Chapter 7: Choosing tiers
 
 **In one line:** put your strongest model where judgment is needed, and the lightest model that works where the job is already spelled out.
 
@@ -8,13 +8,14 @@ This is the question beginners ask most: *which model should do which job?*
 
 A natural instinct is: "Implementation is the hard part, so my strongest model should write the code."
 
-It feels right, but it works against you. The hard part of a project is **deciding** what to build and how to break
-it up: weighing tradeoffs, closing ambiguity, spotting risks. That's where a strong model earns its cost, and it
-costs relatively few tokens because the output is a short plan and a few specs.
+It feels right, but it often works against you. A great deal of the hardest thinking is **deciding** what to build and how to
+break it up: weighing tradeoffs, closing ambiguity, spotting risks. That's where a strong model earns its cost, and it costs
+relatively few tokens because the output is a short plan and a few specs. Implementation can still be hard, especially
+debugging, performance, and security-sensitive work. A clear spec reduces the reasoning it takes without removing it.
 
-Once a spec exists, building it is a **bounded job**: the facts are supplied, the files are named, the tests are listed.
+Once a spec exists, building it is usually a **bounded job**: the facts are supplied, the files are named, the tests are listed.
 A lighter model can follow that. A strong model writing every line of code spends the most tokens on the part that
-needs the least judgment.
+often needs less judgment.
 
 ## Three tiers
 
@@ -51,7 +52,7 @@ first. Then tune down:
 
 1. Run 3 to 5 similar tasks with the middle tier.
 2. If they pass first time, try the light tier on the next 3 to 5.
-3. If the light tier fails, check the spec before blaming the model (Chapter 9), then move back up for that kind of task.
+3. If the light tier fails, check the spec before blaming the model (Chapter 10), then move back up for that kind of task.
 
 Repeat over time. You're finding the **lightest tier that reliably passes** for each kind of task.
 
@@ -94,4 +95,4 @@ See [`reference/model-examples.md`](../reference/model-examples.md) for dated ex
 
 Fill in `docs/models.md` for your own setup, starting the implementer one step above the cheapest tier.
 
-**Back to:** [Guide index](README.md)
+**Next:** [Chapter 8: Parallel work](08-parallel-work.md)

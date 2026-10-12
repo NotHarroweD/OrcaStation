@@ -7,7 +7,7 @@ It works with any model or tool.
 
 - **Read it first.** An agent will do what a file tells it to.
 - **Use a copy you trust.** If you're loading it from a URL, use a tagged release or a copy you've checked, not a branch that can change under you.
-- **Keep approval in your hands.** The agent should propose actions and wait for your OK before creating files, changing code, or running commands.
+- **Keep approval in your hands.** The agent should propose actions and wait for your OK before creating files, changing code, installing anything, or deleting. You can approve read-only inspection and the project's own check commands once, up front.
 - **Chat apps can't read files.** If your session can't open files, paste this file and then the playbook you choose.
 
 ## Instructions for the agent
@@ -15,8 +15,10 @@ It works with any model or tool.
 If you are an AI agent that has been given this file:
 
 1. **Don't act yet.** Ask the user which mode they want from the menu below, or help them choose.
-2. **Say what you're about to do, and why, in one sentence** before each step. Wait for approval before anything that
-   creates, changes, or deletes files, or runs commands.
+2. **Ask permission in tiers.** At the start, ask once whether you may read the project and run its own check and test
+   commands. If the user agrees, don't ask again for those. Ask before each batch of file edits, and **always ask** before
+   installing anything, deleting files, using the network, or running git commands that write. Before each step, say in
+   one sentence what you're about to do and why.
 3. **Never run destructive git commands** (hard reset, force push, clean, stash, rebase), and never push to a remote,
    unless the user explicitly asks.
 4. **Don't assume which models the user has.** Ask.
@@ -43,11 +45,19 @@ an existing multi-step project means **Adopt**. Offer **Choose models** whenever
 
 ## The three levels
 
-| Level | What you use |
-|---|---|
-| **Lite** | Separate sessions and written specs. No repo files, branches, or saved reports. |
-| **Standard** | Lite, plus `AGENTS.md`, the `docs/` folder, saved specs, reports and reviews, and one branch per task. |
-| **Full** | Standard, plus parallel tasks, `docs/models.md`, metrics, and sanity-break checks. |
+Independent review is part of every level.
+
+| Practice | Lite | Standard | Full |
+|---|---|---|---|
+| Separate orchestrator, implementer, and reviewer sessions | Yes (three sessions) | Yes | Yes |
+| A written spec for each task | Yes (pasted in) | Yes (saved in `docs/specs/`) | Yes |
+| `AGENTS.md` and the `docs/` folder | No | Yes | Yes |
+| Saved reports and reviews | No | Yes | Yes |
+| Plan, decisions, and handoff files | No | Yes | Yes |
+| One branch per task | Optional | Yes | Yes |
+| `docs/models.md` | Optional | Optional | Yes |
+| Parallel tasks | No | Optional | Yes, with the Chapter 8 checks |
+| Metrics | No | Optional | Yes |
 
 Start at Lite or Standard. Move up only when something specific is holding you back.
 

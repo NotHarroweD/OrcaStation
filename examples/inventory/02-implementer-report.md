@@ -16,4 +16,4 @@ CONCERNS: none
 
 This report is convincing. The tests went red, then green. Every check passed. There are no deviations and no concerns.
 Nothing in it hints at a problem, and that is exactly why the reviewer does not read it first, and why the reviewer
-tries to break the code itself.
+checks the tests and the code itself.

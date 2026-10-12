@@ -1,4 +1,4 @@
-# Chapter 7: Parallel work
+# Chapter 8: Parallel work
 
 **In one line:** run independent tasks at the same time, but only after you've made sure they can't collide.
 
@@ -69,4 +69,4 @@ Two or three at a time is plenty for most projects. More only helps if review ke
 Look at your plan and mark which tasks could run in parallel. For each pair, verify they share no files.
 If they do, either split the shared file or run them in sequence.
 
-**Next:** [Chapter 8: Adversarial review](08-adversarial-review.md)
+**Next:** [Chapter 9: Adversarial review](09-adversarial-review.md)

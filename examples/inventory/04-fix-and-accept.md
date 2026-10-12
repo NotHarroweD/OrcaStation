@@ -26,8 +26,8 @@ CHECKS: ./check passed (14 tests, lint clean)
 The strengthened test failed against the old code, which is good evidence it now notices the problem.
 
 ## Second review
-VERDICT: PASS. The reviewer reproduced the earlier overflow case (the stack stays at 60), re-ran the sanity-break check
-on `test_full_inventory_raises` (changing a stack before raising now makes it fail), and confirmed the code was restored.
+VERDICT: PASS. The reviewer reproduced the earlier overflow case (the stack stays at 60) and confirmed that
+`test_full_inventory_raises` now checks `stacks`, so it would notice a stack being changed before the error.
 
 ## The record
 Added to `docs/decisions.md`:
@@ -39,6 +39,6 @@ that checks it and add a "fails if" line for it.*
 
 ## What this example shows
 - Checks passing was not enough. The first attempt was wrong in a way no automated check noticed.
-- The implementer's report looked convincing. The hollow test only showed up when the reviewer ran a sanity-break check.
+- The implementer's report looked convincing. The hollow test only showed up when the reviewer read the tests against the spec.
 - The fix was cheap: a fresh session, two numbered problems, no rewrite.
 - The lesson went back into the project's files, so future specs improve.

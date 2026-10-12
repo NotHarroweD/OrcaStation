@@ -25,8 +25,7 @@ Nothing else. No extra context, no conversation history. The spec is the whole j
 A test that can't fail proves nothing, and cheaper models sometimes write tests that pass no matter what.
 Watching a test fail before the code exists is a basic guard: it shows the test notices a missing feature.
 
-A stronger check, the **sanity-break check**, belongs to the **reviewer**, not the implementer (Chapter 8).
-Keeping it with the reviewer means the builder isn't marking its own homework, and it keeps this chapter simple.
+The reviewer (Chapter 9) then checks whether each key test would really notice a problem, so the builder isn't marking its own homework.
 
 ## When the implementer should stop
 
@@ -42,7 +41,7 @@ A BLOCKED report with a clear reason is far cheaper than an hour of flailing.
 ## Choosing the tier
 
 If you're new, start the implementer one step above the cheapest tier so you can tell spec problems from model problems,
-then tune down. [Chapter 12](12-choosing-tiers.md) covers this in detail. Over time, you're looking for the lightest tier
+then tune down. [Chapter 7](07-choosing-tiers.md) covers this in detail. Over time, you're looking for the lightest tier
 that finishes reliably.
 
 - If tasks pass on the first try, you may be able to go lighter still.
@@ -62,4 +61,4 @@ usually better than extending a long one. Old context is exactly what you're try
 Run SPEC-001 through an implementer session. Read its report before looking at the code.
 Did it follow the format? Did it report any deviations?
 
-**Next:** [Chapter 7: Parallel work](07-parallel-work.md)
+**Next:** [Chapter 7: Choosing tiers](07-choosing-tiers.md)

@@ -1,7 +1,7 @@
 # Playbook: Lite
 
 **For:** trying OrcaStation on one task, in any project, with no setup.
-**You need:** two or more separate sessions (separate chats or agent runs). See [choose-models](choose-models.md) if you're
+**You need:** three separate sessions (separate chats or agent runs): orchestrator, implementer, and reviewer. They can all use the same model. See [choose-models](choose-models.md) if you're
 unsure which models to use. If you only have one model, use it in all sessions.
 **Time:** about 20 minutes for a first task.
 
@@ -38,7 +38,7 @@ Paste the spec and the actual result (the changed files or diff). **Do not paste
 > You are the reviewer. You didn't write this. Find problems; don't approve by default and don't fix anything.
 > Check that it meets the spec, that the checks pass, and that nothing outside the spec changed.
 > For the one or two most important tests, say what change to the code should make each fail, and whether the test
-> would really notice. List problems with file and location.
+> would really notice. List problems with file and location, and tell me if the spec itself looks wrong or incomplete.
 
 ## Step 5: Fix or accept
 

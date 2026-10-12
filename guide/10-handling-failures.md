@@ -1,4 +1,4 @@
-# Chapter 9: Handling failures
+# Chapter 10: Handling failures
 
 **In one line:** diagnose first, then change the spec, the session, or the tier, in that order of preference.
 
@@ -20,7 +20,7 @@ Never just rerun the same spec hoping for a different outcome. Read what happene
 | Many edits, tests rerun repeatedly, no progress | Thrashing | Stop, find the exact failing test, start fresh with it |
 | Ends early with no report | Session gave up mid-task | Start fresh, or ask it to continue once |
 | Touches files it shouldn't | Allowed-files list missing or ignored | Tighten the list; add to out of scope |
-| Tests pass but the reviewer finds bugs | Weak tests | Add "fails if" lines; have the reviewer run sanity-break checks |
+| Tests pass but the reviewer finds bugs | Weak tests | Add "fails if" lines; have the reviewer check each key test against its "fails if" line |
 | Fails on every attempt | Task too big or too hard for this tier | Split the task, or move up a tier |
 | Can't find things it needs | Spec didn't carry the facts | Quote names, signatures, line references |
 
@@ -65,4 +65,4 @@ task only, then go back to the cheaper tier for the next one.
 Next time something fails, write one sentence on the cause before you do anything else.
 Over time you'll see which causes show up most, and that tells you where to improve.
 
-**Next:** [Chapter 10: Measuring savings](10-measuring-savings.md)
+**Next:** [Chapter 11: Measuring savings](11-measuring-savings.md)

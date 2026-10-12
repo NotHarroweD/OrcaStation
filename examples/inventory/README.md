@@ -3,6 +3,8 @@
 One task, start to finish, so you can see what the artifacts look like when the loop actually runs.
 The scenario is SPEC-003 from the running example in the guide.
 
+> This is an illustrative scenario written to teach the workflow. The numbers in it (test counts, lint results) are made up, and there is no runnable project behind it.
+
 Read in order:
 
 1. [`01-spec.md`](01-spec.md): what the orchestrator hands the implementer

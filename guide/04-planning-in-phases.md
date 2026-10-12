@@ -31,7 +31,7 @@ A spec that's too big is the most common reason cheap implementers fail.
 ## Dependencies
 
 For each task, note what must be finished first. Tasks with no unfinished dependencies and no shared files
-can run in parallel (Chapter 7).
+can run in parallel (Chapter 8).
 
 ## Example plan
 
@@ -76,7 +76,7 @@ The rhythm:
 4. Write the next phase's specs.
 
 The one exception: tasks you plan to run in parallel are specced together as a batch, since they must agree on
-shared interfaces up front (Chapter 7).
+shared interfaces up front (Chapter 8).
 
 ## Do this
 
