@@ -61,6 +61,10 @@ Measure the **total** workflow, not just the implementer: tokens or cost across 
 plus elapsed time, how much human correction was needed, the rate of tasks accepted, and defects found after acceptance.
 Fewer tokens isn't better value if the result needs more of your time to fix.
 
+One run per condition proves little. Use several comparable tasks per condition, the same acceptance criteria, and a written
+note of the starting conditions, human interventions, and spec rewrites. Treat early results as observations, not conclusions,
+and don't claim OrcaStation saves cost or improves quality until repeated trials support it.
+
 ## Do this
 
 Make the spreadsheet. Fill it in for your next five tasks. Look for one thing you'd change.

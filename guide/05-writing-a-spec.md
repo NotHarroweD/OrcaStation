@@ -16,7 +16,7 @@ Every spec has these parts (the template is in `templates/spec.md`):
 3. **Allowed files:** the only files it may touch
 4. **Task:** exactly what to build
 5. **Facts:** names, signatures, constants, and decisions it needs (quoted from `decisions.md`)
-6. **Tests:** which tests to write, and for the key ones, a "fails if" line saying what change to the code should make them fail
+6. **Verification:** the automated tests to write first (with a "fails if" line for the key ones), plus explicit acceptance checks for anything tests can't cover
 7. **Checks:** the exact commands to run
 8. **Commit:** the exact message
 9. **Report:** where the implementer saves its report
@@ -51,7 +51,7 @@ If no slot is free for the remainder, raise InventoryFullError and change nothin
 - Slots are a list; Inventory has `slots` (int) set at creation.
 - `InventoryFullError` already exists in src/errors.py. Import it; don't redefine it.
 
-## Tests (write first; they must fail before you implement)
+## Verification: automated tests (write first; they must fail before you implement)
 - adding 50 to a stack of 60 gives stacks of 99 and 11
   - fails if: the limit is changed to 100
 - adding when all slots are full raises InventoryFullError and leaves slots unchanged
@@ -76,6 +76,14 @@ Weight limits, saving, any refactoring.
 - **Facts replace searching.** The implementer doesn't need to hunt for context.
 - **Tests say what they guard.** Each key test states what change should make it fail, so the reviewer can check that it really would.
 - **Boundaries are explicit.** Allowed files and out-of-scope lines prevent drift.
+
+## When automated tests don't fit
+
+Tests first is the default for behavior you can test. Some work has no meaningful automated test at the start: visual polish,
+a prototype, documentation, subjective feel. Don't invent hollow tests to fill the gap. Name the verification instead, in the
+spec's Verification section: a checklist of specific criteria, a screenshot to match, a build or lint result, or a person who
+will judge it against stated criteria. Say what can't be verified. Be honest about the tradeoff: a manual check confirms the
+task once, but it doesn't guard against future breakage the way an automated test does.
 
 ## Write specs just in time
 

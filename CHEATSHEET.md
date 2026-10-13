@@ -25,7 +25,7 @@ Then: fix, or move on.
 
 ## A good spec has
 
-Why · Allowed files · Task · Facts · Tests + fails-if lines · Checks · Commit message · Report location · Out of scope
+Why · Allowed files · Task · Facts · Verification (tests with fails-if lines, or acceptance checks) · Checks · Commit message · Report location · Out of scope
 
 ## Definition of done
 

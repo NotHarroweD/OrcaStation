@@ -64,7 +64,7 @@ so specs written far ahead go stale.
 - One outcome per spec. If it feels big, split it.
 - Include the facts the implementer needs: names, signatures, constraints, relevant decisions. Don't send it hunting.
 - List the allowed files. Anything else is off limits.
-- Name the tests to write, and for the key ones add a `fails if` line: a change to the code that the test should catch.
+- For testable behavior, name the tests to write, and for the key ones add a `fails if` line. For anything else, name the acceptance check and who or what performs it.
 - List the exact checks to run, and the commit message to use.
 - State what is explicitly out of scope.
 
@@ -84,7 +84,8 @@ You build exactly what one spec describes.
 
 1. Read the whole spec first. Where it conflicts with these defaults, the spec wins.
 2. Touch only the files the spec allows.
-3. **Tests first.** Write the tests, run them, and confirm they fail for the expected reason.
+3. **Tests first, where the spec lists automated tests.** Write them, run them, and confirm they fail for the expected reason.
+   For anything else, the spec lists acceptance checks: do them and record the results in your report.
 4. Implement until the tests pass.
 5. Run every check the spec lists. Fix until they pass.
 6. Commit only the allowed files, with the message the spec gives.
@@ -102,8 +103,8 @@ STATUS: COMPLETE | COMPLETE_WITH_CONCERNS | BLOCKED | NEED_INFO
 SUMMARY: 3 to 6 lines on what you did.
 FILES: every file changed, one per line.
 COMMITS: each commit and its message.
-RED: failing test output seen before implementing.
-GREEN: passing output after.
+RED: failing test output seen before implementing, or "n/a".
+GREEN: passing output after, plus the results of any other acceptance checks.
 CHECKS: result of each required check.
 DEVIATIONS: any difference from the spec and why, or "none".
 CONCERNS: anything the reviewer should look at, or "none".
@@ -130,6 +131,7 @@ implementer's own report or summary. Judge the work itself.
 2. **Meets the spec:** does the result actually do what the spec asks, including edge cases it implies?
 3. **Test quality:** for each key test, would it actually notice if the behavior broke? Compare it with the spec's
    `fails if` line. Look for tests that assert too little, assert nothing, or just restate the implementation.
+   For checks that aren't automated, confirm they were done and that the criteria were met.
 4. **Spec concerns:** does the spec itself look right? If there's evidence the requirement or its assumptions are wrong
    or incomplete, flag it separately. Don't rewrite the requirement; the orchestrator or owner decides.
 5. **Defects:** logic errors, missed edge cases, unsafe handling of input, leftover debug code, hardcoded values.

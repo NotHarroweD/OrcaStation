@@ -17,7 +17,7 @@ If no slot is free for the remainder, raise InventoryFullError and leave the inv
 - `Inventory` has `slots` (an int, the capacity) and `stacks` (a list of (item, count) pairs).
 - `InventoryFullError` already exists in src/errors.py. Import it; do not redefine it.
 
-## Tests (write first; they must fail before you implement)
+## Verification: automated tests (write first; they must fail before you implement)
 - adding 50 to a stack of 60 gives stacks of 99 and 11
   - fails if: the limit is changed to 100
 - adding when all slots are full raises InventoryFullError AND `stacks` is unchanged afterwards

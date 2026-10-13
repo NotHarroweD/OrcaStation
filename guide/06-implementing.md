@@ -13,7 +13,7 @@ Nothing else. No extra context, no conversation history. The spec is the whole j
 ## The sequence
 
 1. **Read the whole spec** before touching anything.
-2. **Write the tests first** and run them. They should fail, and for the right reason.
+2. **Write the tests first** (if the spec lists automated ones) and run them. They should fail, and for the right reason.
 3. **Implement** until they pass.
 4. **Run every check** the spec lists.
 5. **Commit** only the allowed files, with the exact message from the spec.
@@ -24,6 +24,9 @@ Nothing else. No extra context, no conversation history. The spec is the whole j
 
 A test that can't fail proves nothing, and cheaper models sometimes write tests that pass no matter what.
 Watching a test fail before the code exists is a basic guard: it shows the test notices a missing feature.
+
+When the spec lists acceptance checks instead of automated tests (visual work, documentation, prototypes), do those checks and
+record the results in the report. Don't write hollow tests to fill the gap.
 
 The reviewer (Chapter 9) then checks whether each key test would really notice a problem, so the builder isn't marking its own homework.
 

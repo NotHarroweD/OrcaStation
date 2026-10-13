@@ -5,6 +5,7 @@ You have the spec and the actual result. Do not rely on any report from the impl
 
 ## Definition of done
 - [ ] Every required check passes (run them yourself)
+- [ ] Any non-automated acceptance checks in the spec were actually done
 - [ ] Only allowed files changed
 - [ ] No tests deleted, weakened, or skipped
 - [ ] Working tree is clean
@@ -13,8 +14,8 @@ You have the spec and the actual result. Do not rely on any report from the impl
 ## Meets the spec
 <Does the result do what the spec asks, including implied edge cases?>
 
-## Test quality
-<For each key test: would it really notice if the behavior broke? Compare it with the spec's fails-if line.>
+## Verification quality
+<For each key test: would it really notice if the behavior broke? Compare it with the spec's fails-if line. For non-automated acceptance checks: were they actually done, and were the criteria met?>
 
 ## Defects
 <Logic errors, unhandled input, leftover debug code, hardcoded values.>

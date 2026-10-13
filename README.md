@@ -100,7 +100,8 @@ Orchestration has overhead. Use it when that overhead pays for itself.
 
 Want copy-paste prompts for each step, or an agent-guided start? Use [START.md](START.md).
 
-When you're ready for more, the full workflow adds `AGENTS.md`, branches, saved reports, parallel tasks, and metrics.
+When you're ready for more, **Standard** adds `AGENTS.md`, a `docs/` folder, saved specs, reports, and reviews, and one branch per task.
+**Full** adds parallel tasks, a models file, and metrics. [START.md](START.md) compares the three levels.
 Start with the [guide](guide/README.md).
 
 ## The six principles
@@ -164,7 +165,7 @@ Thank you to everyone who has tested OrcaStation and shared feedback. Your input
 
 - **ShinyStarSam**: First Tester/Feedback contributor.
 
-Want to be listed? Try OrcaStation on a real project and share what worked and what didn't, in the [Discord](https://discord.gg/GGszfGZg8a) or as a GitHub issue.
+Want to be listed? Try OrcaStation on a real project and share what worked and what didn't, in the [Discord](https://discord.gg/GGszfGZg8a) or by opening a [test report](https://github.com/NotHarroweD/OrcaStation/issues/new?template=test-report.md).
 
 ## License
 

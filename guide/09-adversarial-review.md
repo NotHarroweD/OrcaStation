@@ -46,6 +46,21 @@ raising an error, but the test only checked that an error was raised. Reading th
 
 No review proves a test suite is comprehensive. Treat this as a way to catch hollow tests, not as proof the code is correct.
 
+## What a fresh review can't promise
+
+A fresh session removes the shared conversation, which reduces shared assumptions. It doesn't guarantee an independent or
+correct judgment. The same model can repeat the same reasoning mistake in a new session, especially when the spec is
+incomplete or wrong. For higher-risk work, add checks in proportion to the risk:
+
+- review by a different model or model family;
+- tests designed independently of the implementation;
+- static analysis and type checking;
+- human review;
+- explicit acceptance checks against the real requirements.
+
+Whatever you add, have the reviewer look at the actual changes, the repository state, the tests, and the requirements,
+not just the implementer's report.
+
 ## The review prompt
 
 > You are the reviewer. Read AGENTS.md. Here is the spec and here is the result. Do not read any report from

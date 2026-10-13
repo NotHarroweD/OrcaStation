@@ -3,7 +3,7 @@
 **For:** trying OrcaStation on one task, in any project, with no setup.
 **You need:** three separate sessions (separate chats or agent runs): orchestrator, implementer, and reviewer. They can all use the same model. See [choose-models](choose-models.md) if you're
 unsure which models to use. If you only have one model, use it in all sessions.
-**Time:** about 20 minutes for a first task.
+**Time:** a very small task can take around 20 minutes once you know the workflow. Expect longer while you're learning it, or for tasks that need real investigation.
 
 No `AGENTS.md`, branches, or saved reports are needed. Paste the prompts below into the sessions.
 

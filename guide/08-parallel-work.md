@@ -4,10 +4,16 @@
 
 ## When it's safe
 
-Two tasks can run in parallel when **both** are true:
+Two tasks are candidates for parallel work when their dependencies are done, their interfaces are agreed, and each can be built
+and tested independently. Giving each task exclusive ownership of its files helps prevent collisions, but different files don't
+guarantee independent work (see below).
+
+Check that:
 
 1. Neither depends on the other's output.
-2. They touch **different files**.
+2. They don't share state, or an interface that isn't settled yet.
+3. Each can be tested on its own.
+4. They touch **different files**, so they can't collide.
 
 ```mermaid
 flowchart TD
