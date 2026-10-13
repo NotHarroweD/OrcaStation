@@ -1,0 +1,16 @@
+name: Suggestion or problem with the guide
+description: Report an unclear step, an error, or an idea for improvement
+title: "Feedback: "
+labels: ["feedback"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What's the problem or suggestion?
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where is it?
+      description: A file name, chapter, or section, if you know.

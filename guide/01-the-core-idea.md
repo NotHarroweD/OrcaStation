@@ -60,17 +60,25 @@ unrelated files has more to sift through, and the details that matter can get lo
 sufficient context**: enough to do its job correctly, and no more. That's why specs carry the relevant facts, and why
 each task starts in a fresh session.
 
-## When to use it, and when not to
+## When to use OrcaStation, and when not to
 
-OrcaStation has overhead: specs, extra sessions, and reviews. It pays off when:
+**Use it when:**
 
 - the work has several steps or touches several parts of a project;
 - correctness matters;
-- the project will span many sessions;
-- you want to run tasks in parallel.
+- the project will span many sessions, or be handed between people or sessions;
+- you want to run tasks in parallel;
+- you keep hitting usage limits, or keep re-explaining context to a session.
 
-It's probably overkill for typo fixes, renames, tiny UI tweaks, one-off scripts, and early exploration when you don't
-yet know what you want. A normal single session is fine for those. Use OrcaStation when the overhead pays for itself.
+**It's probably not the right fit when:**
+
+- you're making a tiny change, like a typo fix, a rename, or a small UI tweak;
+- you're writing a one-off script;
+- you're exploring and don't yet know what you want to build. A normal single session suits these better.
+
+**What it does and doesn't do:** OrcaStation teaches you how to split work across roles and sessions, and gives you the tools to
+do it. It doesn't decide what you should build, replace your own judgment, or guarantee savings or correctness. Whether it saves
+tokens for you depends on the work, which is why [Chapter 11](11-measuring-savings.md) shows how to measure it.
 
 ## The six principles
 

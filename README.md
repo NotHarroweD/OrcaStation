@@ -15,12 +15,27 @@ Maintained by the [AI Game Dev](https://aigamedevs.org) community.
 
 ---
 
-## What is orchestration?
+## What is OrcaStation?
 
-Orchestration means splitting a development job across **separate AI sessions with distinct roles**
-(planning, building, reviewing) that are coordinated through **written handoffs** (specs, reports, reviews)
-instead of one long conversation. Each job gets the level of capability it actually needs, and nothing is trusted
-just because the session that produced it said so.
+OrcaStation is a resource for learning **orchestration**, a core part of effective AI-assisted development, together with a set of
+tools you can use to put it into practice in your own projects, whether they're brand new or already underway.
+
+Orchestration means splitting a development job across **separate AI sessions with distinct roles** (planning, building,
+reviewing) that are coordinated through **written handoffs** (specs, reports, reviews) instead of one long conversation. Each job gets
+the level of capability it actually needs, and nothing is trusted just because the session that produced it said so.
+
+OrcaStation wraps that idea around a standard, phase-driven software development cycle, along with the practices that make it work:
+
+- Planning in phases, and writing small, specific specs for each task
+- Adversarial code review by an independent session
+- Tests, or explicit acceptance checks, tied to every task
+- Parallel work, with checks to keep tasks from colliding
+- Project state kept in files: plans, decisions, and handoffs
+- Matching models and effort settings to each role
+
+You'll find a step-by-step [guide](guide/README.md), [playbooks](START.md) for starting a new project, adopting the workflow in an
+existing one, or just trying it on a single task, drop-in [agent instructions](AGENTS.md), [templates](templates), and a
+[worked example](examples/inventory).
 
 ## The problem with one session and one model
 
@@ -35,6 +50,7 @@ tend to show up. Some come from relying on one session, and some from relying on
 - **Bloated context.** A long session fills with history that the current task doesn't need. Important details get
   diluted, decisions get forgotten, and quality can drift.
 - **State trapped in the conversation.** Decisions and plans live in chat. When the session ends or restarts, they're gone.
+- **Vague, oversized tasks.** Asking for a big, loosely defined piece of work in one go invites guessing, scope creep, and rework.
 
 **From using one model**
 
@@ -47,7 +63,10 @@ tend to show up. Some come from relying on one session, and some from relying on
 - **One set of strengths and limits.** Every model is better at some things than others, and usage limits can stall all of
   your work at once. Relying on a single model leaves no flexibility or fallback.
 
-## How OrcaStation addresses them
+## The solution
+
+Orchestration gives each job its own session, and its own model where that helps, and ties them together through files.
+OrcaStation turns that into a process you can follow.
 
 | Problem | What OrcaStation does |
 |---|---|
@@ -59,10 +78,16 @@ tend to show up. Some come from relying on one session, and some from relying on
 | Shared blind spots | The reviewer runs in a fresh session, and can be a different tier or model so it doesn't share the builder's assumptions |
 | One model's limits | Use several tiers (and vendors, if you like), so you can pick the right tool per task and keep working when one runs low |
 
+### What you get
+
+- **For you:** a way to spend expensive tokens on the work that needs them, a process you can repeat, and less time re-explaining context to a session.
+- **For your workflow:** small, well-defined tasks, project state that survives a restart or a handoff, and parallel work when it's safe.
+- **For your results:** an independent check on every task, tests or explicit acceptance checks tied to the spec, and decisions on record so the same mistake doesn't come back.
+
 > These are benefits observed in practice, not guarantees. Lighter models need tighter specs, and writing good specs
 > costs orchestrator tokens. The guide covers the tradeoffs.
 
-## The three roles
+### The three roles
 
 | Role | Job | Tier |
 |------|-----|------|
@@ -70,39 +95,78 @@ tend to show up. Some come from relying on one session, and some from relying on
 | **Implementer** | Follows one spec and builds it | Lightest tier that does it reliably |
 | **Reviewer** | Independently audits the result against the spec | Strong tier, **fresh session** |
 
-## When to use it, and when not to
+## When to use OrcaStation
 
-**A good fit**
-- Multi-step features and larger changes
-- Work where correctness matters
-- Projects that span many sessions
-- Tasks you want to run in parallel
+### Use it when
 
-**Probably overkill**
-- Typo fixes, renames, and tiny UI tweaks
-- One-off scripts
-- Early exploration, when you don't yet know what you want
+- You're building multi-step features or making larger changes
+- Correctness matters
+- The project will span many sessions, or be handed between people or sessions
+- You want to run tasks in parallel
+- You keep hitting usage limits, or keep re-explaining context to a session
 
-**Outside its scope**
-- It doesn't decide what you should build or replace your own judgment.
-- It isn't a framework, an app, or an agent runtime.
-- It doesn't cover deployment or security audits.
+### It's probably not the right fit when
 
-Orchestration has overhead. Use it when that overhead pays for itself.
+- You're making a tiny change, like a typo fix, a rename, or a small UI tweak
+- You're writing a one-off script
+- You're exploring and don't yet know what you want to build
 
-## Start in five steps (Lite)
+### What it does, and what it doesn't
 
-1. In a strong model's session (the orchestrator), describe your project and ask for a short plan.
-2. Ask it for a small spec for the first task: what to build, which files, and how to check it.
-3. Give that spec to a **fresh session** (the implementer). If you're new, use a model one step above the cheapest.
-4. Give the spec and the result to **another fresh session** (the reviewer) and ask it to find problems.
-5. Fix what it finds, then repeat for the next task.
+**It does**
+- Teach orchestration and how to apply it
+- Give you playbooks, templates, and agent instructions to follow
+- Help you match models and effort settings to each role
+- Provide a phase-driven workflow with independent review built in
 
-Want copy-paste prompts for each step, or an agent-guided start? Use [START.md](START.md).
+**It doesn't**
+- Decide what you should build, or replace your own judgment
+- Install software or run agents for you. It isn't a framework, an app, or an agent runtime
+- Choose a model for you. The examples are dated snapshots, so check them
+- Cover deployment or security audits
+- Guarantee savings or correctness
 
-When you're ready for more, **Standard** adds `AGENTS.md`, a `docs/` folder, saved specs, reports, and reviews, and one branch per task.
-**Full** adds parallel tasks, a models file, and metrics. [START.md](START.md) compares the three levels.
-Start with the [guide](guide/README.md).
+## How to use OrcaStation
+
+Pick the option that matches where you are. Each one has a playbook with step-by-step instructions and copy-paste prompts.
+You can follow a playbook yourself, or give [START.md](START.md) to an AI session and let it guide you. If your chat app can't
+read files, paste the playbook you want into the session.
+
+### Lite: try it on one task
+
+- **What it is:** the lightest way to use the method, with no setup. A strong model plans and writes a spec, a lighter model builds, and a fresh session reviews.
+- **Use it when:** you're trying OrcaStation for the first time, or you have one small-to-medium task in any project or tool.
+- **How:** open three separate sessions (orchestrator, implementer, reviewer), and follow [playbooks/lite.md](playbooks/lite.md): plan, write a small spec, build in a fresh session, review in another fresh session, then fix what the review finds.
+
+### New project: build with OrcaStation from the start
+
+- **What it is:** a guided setup for a project that uses the full workflow from day one.
+- **Use it when:** you're starting something new and want specs, reviews, and saved project state built in.
+- **How:** follow [playbooks/new-project.md](playbooks/new-project.md): choose a stack, create the repo layout with `AGENTS.md` and a `docs/` folder, plan in phases, write specs for the next phase only, then run the build-and-review loop.
+
+### Adopt in an existing project
+
+- **What it is:** a way to add the workflow to a codebase you already have, without changing anything until you approve.
+- **Use it when:** you have existing code and want to work on it with OrcaStation.
+- **How:** follow [playbooks/adopt-existing-project.md](playbooks/adopt-existing-project.md): set the scope, let the agent look around read-only, review its assessment and recommended level, approve the setup, then plan only the work you're doing.
+
+### Choose models: match models to roles
+
+- **What it is:** a short exercise that decides which model and effort setting fills each role.
+- **Use it when:** you're unsure which models to use, or before starting any of the options above.
+- **How:** follow [playbooks/choose-models.md](playbooks/choose-models.md): list what you have access to, sort it into tiers, accept or adjust the suggested mapping, and save it to `docs/models.md`. [Choosing tiers](guide/07-choosing-tiers.md) explains the reasoning, and [model examples](reference/model-examples.md) has dated Claude and ChatGPT examples.
+
+### The three levels
+
+| Level | What you use |
+|---|---|
+| **Lite** | Separate sessions and written specs. No repo files. |
+| **Standard** | Lite, plus `AGENTS.md`, a `docs/` folder, saved specs, reports, and reviews, and one branch per task. |
+| **Full** | Standard, plus parallel tasks, a models file, and metrics. |
+
+Start with Lite or Standard and move up only when something specific is holding you back. [START.md](START.md) compares the levels in detail.
+
+**Not sure where to begin?** Run Lite on one real task. Or paste [START.md](START.md) into a session, and it will ask three short questions and recommend an option. If you'd rather learn first, start with the [guide](guide/README.md).
 
 ## The six principles
 
@@ -154,6 +218,14 @@ An independent review caught it.
 
 First full draft. Start with the [guide index](guide/README.md), or jump to the [worked example](examples/inventory).
 
+## Help test OrcaStation
+
+OrcaStation is a first draft, and the most valuable thing you can give it is a real test. Try it on a task, then tell us what
+worked and where you got stuck.
+
+**[Send a test report](https://github.com/NotHarroweD/OrcaStation/issues/new?template=test-report.yml)** (needs a free GitHub account),
+or share your results in the [Discord](https://discord.gg/GGszfGZg8a).
+
 ## Community
 
 Questions, results, and war stories are welcome in the [AI Game Dev Discord](https://discord.gg/GGszfGZg8a).
@@ -165,7 +237,7 @@ Thank you to everyone who has tested OrcaStation and shared feedback. Your input
 
 - **ShinyStarSam**: First Tester/Feedback contributor.
 
-Want to be listed? Try OrcaStation on a real project and share what worked and what didn't, in the [Discord](https://discord.gg/GGszfGZg8a) or by opening a [test report](https://github.com/NotHarroweD/OrcaStation/issues/new?template=test-report.md).
+Want to be listed? Try OrcaStation on a real project and share what worked and what didn't, in the [Discord](https://discord.gg/GGszfGZg8a) or by opening a [test report](https://github.com/NotHarroweD/OrcaStation/issues/new?template=test-report.yml).
 
 ## License
 

@@ -1,0 +1,84 @@
+name: Test report
+description: Tell us how OrcaStation worked, or didn't, on a real task
+title: "Test report: "
+labels: ["test-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for trying OrcaStation. Short answers are fine. The most useful reports say where you got confused.
+  - type: textarea
+    id: project
+    attributes:
+      label: What were you building or changing?
+      description: A sentence or two.
+    validations:
+      required: true
+  - type: dropdown
+    id: level
+    attributes:
+      label: Which level did you use?
+      options:
+        - Lite
+        - Standard
+        - Full
+        - Not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: playbook
+    attributes:
+      label: Which playbook did you follow?
+      multiple: true
+      options:
+        - Lite
+        - New project
+        - Adopt in an existing project
+        - Choose models
+        - None (I read the guide)
+  - type: textarea
+    id: models
+    attributes:
+      label: Which models or tools did you use for each role?
+      description: Orchestrator, implementer, and reviewer.
+  - type: input
+    id: time
+    attributes:
+      label: How long did it take to get started, and to finish one task?
+      placeholder: "e.g. 20 minutes to start, 2 hours to finish"
+  - type: textarea
+    id: confusion
+    attributes:
+      label: Where did you get confused or stuck?
+      description: A step, a sentence, a file, or a prompt.
+    validations:
+      required: true
+  - type: textarea
+    id: heavy
+    attributes:
+      label: Did anything feel unnecessary or too heavy?
+  - type: textarea
+    id: review
+    attributes:
+      label: Did the reviewer find anything the implementer missed?
+      description: If so, what?
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Did you finish and verify the task?
+      options:
+        - Yes, finished and verified
+        - Finished, but couldn't fully verify
+        - Partly finished
+        - No
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What would you change?
+  - type: input
+    id: credit
+    attributes:
+      label: Want to be credited in the Contributors list?
+      description: If yes, what name should we use? Leave blank to stay anonymous.
