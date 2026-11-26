@@ -6,9 +6,9 @@ It works with any model or tool.
 ## Before you let an agent follow this file
 
 - **Read it first.** An agent will do what a file tells it to.
-- **Use a copy you trust.** If you're loading it from a URL, use a tagged release or a copy you've checked, not a branch that can change under you.
+- **Use a copy you trust.** If you're loading it from a URL, use a [tagged release](https://github.com/NotHarroweD/OrcaStation/releases) or a copy you've checked, not a branch that can change under you.
 - **Keep approval in your hands.** The agent should propose actions and wait for your OK before creating files, changing code, installing anything, or deleting. You can approve read-only inspection and the project's own check commands once, up front.
-- **Chat apps can't read files.** If your session can't open files, paste this file and then the playbook you choose.
+- **If your session can't open files** (some chat apps can't), paste this file and then the playbook you choose.
 
 ## Instructions for the agent
 

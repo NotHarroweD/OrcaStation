@@ -4,9 +4,9 @@ One page. Print it, pin it, or keep it open next to your sessions.
 
 ## The loop
 
-**Orchestrator** (most capable tier) writes the spec, **Implementer** (cheapest tier that works) builds it,
-**Reviewer** (fresh session) audits it, and the findings go back to the orchestrator.
-Then: fix, or move on.
+**Orchestrator** (most capable tier) writes the spec, **Implementer** (lightest tier that works reliably; start one
+step above it while you're learning) builds it, **Reviewer** (fresh session) audits it, and the findings go back to
+the orchestrator. Then: accept, send back with fixes, or rewrite the spec.
 
 ## The six principles
 
@@ -20,6 +20,7 @@ Then: fix, or move on.
 ## Rhythm
 
 - Plan the **whole project** up front. Write specs for the **next phase only**.
+- Phase 0 (repo, `check`, one passing test) is set up by hand. Specs start at Phase 1.
 - After each phase: update `plan.md` and `decisions.md`, write `handoff.md`, then spec the next phase.
 - Parallel tasks are specced together, and must not share files.
 
@@ -30,6 +31,7 @@ Why · Allowed files · Task · Facts · Verification (tests with fails-if lines
 ## Definition of done
 
 - [ ] Every check passes (`./check`)
+- [ ] Any acceptance checks that aren't automated were done
 - [ ] Only allowed files changed
 - [ ] No tests deleted, weakened, or skipped
 - [ ] Working tree clean
@@ -44,7 +46,8 @@ Why · Allowed files · Task · Facts · Verification (tests with fails-if lines
 
 ## Git
 
-One branch per task · one commit per spec, exact message · reports and reviews committed separately · merge only after review passes
+One branch per task · one work commit per attempt (spec's exact message, then `fix: SPEC-XXX review round N`) ·
+reports and reviews committed separately · merge only after review passes
 
 ## When something fails
 

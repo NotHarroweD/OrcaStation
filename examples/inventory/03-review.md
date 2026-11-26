@@ -1,6 +1,6 @@
 # REVIEW-003: Stack limits
 
-(The reviewer received the spec and the repository. It did not receive the implementer's report.)
+(The reviewer received the spec and the repository. It did not open `docs/reports/`, so it never saw the implementer's report.)
 
 ## Definition of done
 - [x] `./check` passes (ran it: 14 tests, lint clean)
@@ -27,6 +27,9 @@ The spec requires the inventory to be left exactly as it was.
 
 ## Scope
 Nothing extra added.
+
+## Spec concerns
+None. The spec states the all-or-nothing rule clearly; the code doesn't follow it.
 
 ## Result
 VERDICT: FAIL

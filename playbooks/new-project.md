@@ -30,9 +30,9 @@ Propose this layout, then create it after approval:
 ```
 project/
 ├── AGENTS.md          Copy from the OrcaStation repo, unedited at first
-├── check              One command that runs all checks (it should pass even with no tests yet)
+├── check              One command that runs all checks
 ├── src/
-├── tests/
+├── tests/             With one placeholder test that passes
 └── docs/
     ├── plan.md
     ├── specs/
@@ -40,25 +40,27 @@ project/
     ├── reviews/
     ├── decisions.md
     ├── handoff.md
-    └── models.md      From the choose-models playbook
+    └── models.md      Optional, from the choose-models playbook
 ```
 
-Make the first commit. Use one branch per task from here on.
+Run `check` and confirm it passes, then make the first commit. This setup is Phase 0 (the skeleton), so it needs no spec.
+Use one branch per task from here on.
 
 ## Step 4: Plan in phases
 
 Orchestrator session. Prompt:
 
 > You are the orchestrator. Read AGENTS.md. Here is the project: <summary and stack>.
-> Write docs/plan.md: Phase 0 is the skeleton (repo, check command, one passing test), then thin working slices,
-> then depth. Break each phase into tasks that each have one outcome, and note dependencies and which tasks could run
-> in parallel. Don't write specs yet.
+> Write docs/plan.md: Phase 0 is the skeleton, which is already set up, so mark it done. Then plan thin working
+> slices, then depth. Break each phase into tasks that each have one outcome, and note dependencies and which tasks
+> could run in parallel. Don't write specs yet.
 
 The user reads and adjusts the plan. This is the most valuable thing the orchestrator produces.
 
 ## Step 5: Spec only the next phase
 
-> Write specs for Phase 0 only, using templates/spec.md. One file per task in docs/specs/.
+> Write specs for Phase 1 only, using templates/spec.md. One file per task in docs/specs/, numbered SPEC-001 onward.
+> Add each spec's ID next to its task in docs/plan.md.
 
 ## Step 6: Run the loop for each spec
 

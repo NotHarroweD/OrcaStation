@@ -10,7 +10,9 @@ That means your stack matters more than usual. A good stack for this workflow ha
 1. **Everything runs from the command line.** If a task can only be verified by clicking around in an editor,
    an agent can't verify it.
 2. **One command runs all checks.** Tests, linting, and type checks should be a single command, such as `./check`.
-   You'll reference it in every spec.
+   You'll reference it in every spec. The name doesn't matter, only that it's one command: on Windows it might be
+   `check.ps1` or `check.cmd`, and in a JavaScript project `npm run check`. This guide writes `./check` throughout;
+   use your own wherever you see it. (On macOS and Linux, make the script executable with `chmod +x check`.)
 3. **Tests are fast.** If the suite takes ten minutes, agents will skip it or time out. Aim for seconds.
 4. **It's popular and well documented.** Cheaper models know common tools well and stumble on obscure ones.
 5. **It has few moving parts.** Every extra dependency is another way for a task to fail for reasons unrelated to the spec.
@@ -27,6 +29,12 @@ So structure the project in layers:
 - **Presentation** (visuals, sound, feel): reviewed by a human, since that's what you actually judge by eye.
 
 Orchestrate the first two layers heavily. Keep the third closer to you.
+
+**If you're using an engine,** check how its tests run without the editor open before you plan anything. Unity's
+Test Runner can run in batch mode from the command line, Godot can run test add-ons such as GUT or gdUnit4 headless,
+and Unreal's automation tests can be started from the command line. Wrap whichever one you use in your `check`
+command. If engine tests are slow to start, keep core logic in plain code that tests in seconds, and run the slower
+engine tests less often.
 
 ## Our running example
 

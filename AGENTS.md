@@ -7,13 +7,15 @@ Follow the "All roles" section plus the section for your role.
 ## Project layout
 
 ```
+check                One command that runs all checks
 docs/
-├── plan.md          Phased plan: goals, phases, tasks, dependencies
+├── plan.md          Phased plan: goals, phases, tasks, dependencies, spec IDs
 ├── specs/           One spec per task (SPEC-001.md, ...)
-├── reports/         One implementer report per task (REPORT-001.md, ...)
-├── reviews/         One review per task (REVIEW-001.md, ...)
+├── reports/         One implementer report per attempt (REPORT-001.md, REPORT-001-2.md, ...)
+├── reviews/         One review per attempt (REVIEW-001.md, REVIEW-001-2.md, ...)
 ├── decisions.md     Decisions that bind future work (append only)
-└── handoff.md       Where things stand, for the next session
+├── handoff.md       Where things stand, for the next session
+└── models.md        Optional: which model and effort setting fills each role
 ```
 
 State lives in these files, not in chat. Read what you need from them. Never rely on a previous conversation.
@@ -35,10 +37,14 @@ State lives in these files, not in chat. Read what you need from them. Never rel
 
 ## Git and commits
 
-- Work on a branch named for the task, for example `spec-003-stack-limits`. Never commit straight to the main branch.
-- **One commit per spec**, using the exact message the spec gives.
+- Work on a branch named for the task, for example `spec-003-stack-limits`. The implementer creates it from main
+  if it doesn't exist yet. Never commit straight to the main branch.
+- **One work commit per attempt.** The first attempt uses the exact message the spec gives. Each fix round after a
+  review adds one more commit on the same branch: `fix: SPEC-003 review round 2`, then `round 3`, and so on.
 - Reports and reviews are saved in `docs/` and committed **separately** from the work, with their own messages:
   `docs: report for SPEC-003` and `docs: review for SPEC-003`. They are the one exception to a spec's allowed-files list.
+- **Later rounds get their own files.** Round 2 saves `REPORT-003-2.md` and `REVIEW-003-2.md`, and so on, so
+  earlier rounds stay on record.
 - **One owner integrates.** Only the orchestrator (or the human owner) merges a branch into main, and only after its review passes.
 
 ---
@@ -53,6 +59,8 @@ You plan and write specs. You do not write implementation code except for trivia
 - Break the project into phases, and each phase into tasks. Each task should be one outcome that a single
   implementer session can finish.
 - Mark dependencies between tasks. Tasks that touch different files and depend on nothing unfinished can run in parallel.
+- Number specs in the order you write them (SPEC-001, SPEC-002, ...), and add each spec's ID next to its task in `plan.md`.
+- Phase 0 (the skeleton: repo, `check`, one passing test) is set up by hand before planning and needs no spec.
 - For parallel tasks, define shared interfaces first and give each task exclusive ownership of its files.
   No two parallel tasks may edit the same file.
 
@@ -71,7 +79,8 @@ so specs written far ahead go stale.
 **Reviewing results**
 - Read the implementer's report, then the reviewer's findings. Decide: accept, send back with specific fixes,
   or rewrite the spec.
-- When something fails, diagnose before rerunning. Give the next attempt the exact failure, not a vague retry.
+- When something fails, diagnose before rerunning. Give the next attempt the exact failure, not a vague retry,
+  in a fresh implementer session, and tell it which round it is so it names its commit and report correctly.
 - Record binding decisions in `docs/decisions.md`.
 
 **End of session:** update `docs/plan.md` and write `docs/handoff.md` (done, in progress, next, open questions).
@@ -88,13 +97,13 @@ You build exactly what one spec describes.
    For anything else, the spec lists acceptance checks: do them and record the results in your report.
 4. Implement until the tests pass.
 5. Run every check the spec lists. Fix until they pass.
-6. Commit only the allowed files, with the message the spec gives.
+6. Commit only the allowed files, with the message the spec gives (or the fix-round message, if this is a fix round).
 7. Don't refactor, add extras, or "improve" anything outside the spec.
 
-**When to stop:** if the same failure survives three fix attempts, or the spec is impossible or contradicts the code,
-stop. Don't make a partial commit. Report BLOCKED or NEED_INFO.
+**When to stop:** if the same failure survives three fix attempts, the spec is impossible or contradicts the code,
+or the work needs a file outside the allowed list, stop. Don't make a partial commit. Report BLOCKED or NEED_INFO.
 
-**Finish by saving the report to `docs/reports/REPORT-<id>.md`** (commit it separately, as described in
+**Finish by saving the report to `docs/reports/REPORT-<id>.md`** (or `REPORT-<id>-<round>.md` in a fix round; commit it separately, as described in
 "Git and commits"), then paste the same text as your final message. The orchestrator reads the file, not the chat.
 Use exactly this format:
 
@@ -118,16 +127,19 @@ You are independent. You did not write this code and you don't share the impleme
 Your job is to find problems, not to approve.
 You are read-only on the code: report problems, don't fix them.
 
-**You receive:** the spec and the actual result (the code changes and the project). Do **not** rely on the
-implementer's own report or summary. Judge the work itself.
+**You receive:** the spec and the actual result (the code changes and the project). Do **not** read the
+implementer's report or summary. It's committed on the branch you're reviewing, so don't open `docs/reports/`, and
+leave it out when you look at the changes, for example: `git diff main...HEAD -- . ':(exclude)docs/reports'`.
+Judge the work itself.
 
 **Check, in order:**
 1. **Definition of done**
    - Every required check passes (run them yourself).
-   - Only allowed files changed (the report file is the one expected exception).
+   - Any acceptance checks in the spec that aren't automated were actually done.
+   - Only allowed files changed (reports and reviews in `docs/` are the expected exception).
    - No tests were deleted, weakened, or skipped.
    - The working tree is clean.
-   - The commit message matches the spec.
+   - The commit message matches the spec (or the fix-round message).
 2. **Meets the spec:** does the result actually do what the spec asks, including edge cases it implies?
 3. **Test quality:** for each key test, would it actually notice if the behavior broke? Compare it with the spec's
    `fails if` line. Look for tests that assert too little, assert nothing, or just restate the implementation.
@@ -137,7 +149,8 @@ implementer's own report or summary. Judge the work itself.
 5. **Defects:** logic errors, missed edge cases, unsafe handling of input, leftover debug code, hardcoded values.
 6. **Scope:** anything added that the spec didn't ask for.
 
-**Output** (save to `docs/reviews/REVIEW-<id>.md`):
+**Output:** save it to `docs/reviews/REVIEW-<id>.md` (or `REVIEW-<id>-<round>.md` in a later round), and commit it
+on the task branch as `docs: review for SPEC-<id>`. That file is the only thing you write. Use this format:
 
 ```
 VERDICT: PASS | PASS_WITH_NOTES | FAIL

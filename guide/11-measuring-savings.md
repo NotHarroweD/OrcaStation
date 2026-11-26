@@ -27,7 +27,7 @@ rolling or weekly usage limits, so it also helps to know which role is using the
 - **Tokens by role.** Is the orchestrator really a small share of the total?
 - **First-try pass rate** over time. It should rise as your specs improve.
 - **Pass rate vs. spec size.** Where does it start dropping? That's your size limit.
-- **Defects found by review** on tasks that passed all checks. If it's ever zero across many tasks,
+- **Defects found by review** on tasks that passed all checks. If it stays at zero across many tasks,
   your checks may be strong, or your reviewer may be too gentle.
 
 ## An A/B test you can run yourself

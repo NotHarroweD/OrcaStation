@@ -9,19 +9,23 @@ Items should stack up to a maximum so inventories stay manageable.
 
 ## Task
 In `Inventory.add(item, count)`: an item type stacks up to MAX_STACK.
-If adding would exceed it, fill the existing stack to the limit and put the remainder in a new stack.
+If the item already has a stack with room, fill it to the limit first, and put the remainder in a new stack.
 If no slot is free for the remainder, raise InventoryFullError and leave the inventory exactly as it was.
 
 ## Facts
 - MAX_STACK = 99 (decisions.md)
 - `Inventory` has `slots` (an int, the capacity) and `stacks` (a list of (item, count) pairs).
+- `count` is always between 1 and MAX_STACK, so the remainder never needs more than one new stack.
 - `InventoryFullError` already exists in src/errors.py. Import it; do not redefine it.
 
-## Verification: automated tests (write first; they must fail before you implement)
+## Verification
+**Automated tests (write first; they must fail before you implement)**
 - adding 50 to a stack of 60 gives stacks of 99 and 11
   - fails if: the limit is changed to 100
 - adding when all slots are full raises InventoryFullError AND `stacks` is unchanged afterwards
   - fails if: the code changes a stack before raising the error
+
+**Not verifiable here:** none
 
 ## Checks
 ./check

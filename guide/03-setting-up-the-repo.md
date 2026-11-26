@@ -25,7 +25,8 @@ Every file in `docs/` exists so that a brand-new session can pick up exactly whe
 
 1. **Create the repo** and commit an empty project skeleton.
 2. **Add `AGENTS.md`** from the OrcaStation repo. Don't edit it yet. Use it as is until you know what you'd change.
-3. **Create the `check` command.** Even with no tests yet, it should run and pass. Commit it.
+3. **Create the `check` command** and one placeholder test that passes. Commit them. This is Phase 0 of
+   your plan (Chapter 4), done by hand so every later spec has a working check to point at.
 4. **Create the empty `docs/` files.** A heading and a sentence each is enough.
 5. **Decide on branches.** The simplest rule: one branch per task, merged only after review passes.
 6. **Decide on commit messages.** Short and consistent (for example, `feat(inventory): add stacking`).
@@ -36,12 +37,18 @@ Every file in `docs/` exists so that a brand-new session can pick up exactly whe
 Agents need clear git rules, or they'll improvise. These are the defaults in `AGENTS.md`:
 
 - **One branch per task**, named for it (`spec-003-stack-limits`). Nothing is committed straight to main.
-- **One commit per spec**, with the exact message from the spec.
+- **One work commit per attempt.** The first uses the exact message from the spec. If a review sends the work back,
+  the fix goes in one more commit on the same branch (`fix: SPEC-003 review round 2`).
 - **Reports and reviews are committed separately** (`docs: report for SPEC-003`), so the work commit stays clean
-  and the working tree is clean when the reviewer arrives.
+  and the working tree is clean when the reviewer arrives. Fix rounds get their own files (`REPORT-003-2.md`),
+  so the history of each round stays on record.
 - **You merge after review passes.** Merging is a decision, so it stays with you or the orchestrator.
 
 If you'd rather use other conventions, change them in `AGENTS.md` once, and every spec inherits them.
+
+**If your agent runs in the cloud** and opens branches or pull requests as part of its normal flow, the "never push"
+rule in `AGENTS.md` will get in its way. Change that one line to describe what you allow, for example "may push its
+own task branch, never main."
 
 ## If your tool looks for a different filename
 
@@ -57,9 +64,9 @@ explains how to choose and includes a template.
 
 You'll have three kinds of sessions, and each begins the same way: tell it its role.
 
-- *"You are the orchestrator. Read AGENTS.md, then docs/handoff.md and docs/plan.md."*
-- *"You are the implementer. Read AGENTS.md, then docs/specs/SPEC-001.md and do exactly that."*
-- *"You are the reviewer. Read AGENTS.md, then review SPEC-001 against the result."*
+- *"You are the orchestrator. Read AGENTS.md, then docs/handoff.md, docs/plan.md, and docs/decisions.md."*
+- *"You are the implementer. Read AGENTS.md, then docs/specs/SPEC-001.md. Do exactly what it says."*
+- *"You are the reviewer. Read AGENTS.md. Review SPEC-001 against the result. Don't read the implementer's report. Find problems."*
 
 Short, explicit, and always pointing at files.
 
