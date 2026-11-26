@@ -30,7 +30,7 @@ flowchart LR
 | Role | Does | Use |
 |------|------|-----|
 | **Orchestrator** | Plans the project, writes precise specs, makes decisions | Your most capable tier |
-| **Implementer** | Builds exactly one spec | The cheapest tier that does it reliably |
+| **Implementer** | Builds exactly one spec | The lightest tier that does it reliably |
 | **Reviewer** | Audits the result against the spec | A strong tier, in a **fresh session** |
 
 The orchestrator's output is *text that tells someone else what to build*. That's cheap compared with building it.
@@ -41,7 +41,8 @@ A model reviewing its own work in the same session tends to agree with itself. I
 so it explains problems away instead of seeing them.
 
 A reviewer in a fresh session has none of that. It sees the spec and the result, and nothing else. That independence
-is what makes it useful. It doesn't need to be a different model, just a different, clean session.
+is what makes it useful. It doesn't need to be a different model, just a different, clean session. A fresh session
+still shares the model's blind spots, though, so [Chapter 9](09-adversarial-review.md) covers when to add more.
 
 ## What this does for you
 

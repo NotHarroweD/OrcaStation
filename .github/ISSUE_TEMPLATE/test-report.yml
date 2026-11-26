@@ -7,6 +7,11 @@ body:
     attributes:
       value: |
         Thanks for trying OrcaStation. Short answers are fine. The most useful reports say where you got confused.
+  - type: input
+    id: version
+    attributes:
+      label: Which version of OrcaStation did you use?
+      description: A release tag like v1.0.0, or "latest from GitHub" if you're not sure.
   - type: textarea
     id: project
     attributes:

@@ -7,6 +7,10 @@ unsure which models to use. If you only have one model, use it in all sessions.
 
 No `AGENTS.md`, branches, or saved reports are needed. Paste the prompts below into the sessions.
 
+**If your sessions can't run commands** (a chat app rather than a coding agent), you're the hands. When a prompt
+says to run tests or checks, you run them and paste the output back in. Give the reviewer output **you** captured
+from the finished code, not output copied from the implementer's chat.
+
 ## Step 1: Plan (session A, your strongest model: the orchestrator)
 
 > You are the orchestrator. I'm working on: <describe your project and goal>.
@@ -33,7 +37,8 @@ If you're new, use a model one step above your cheapest. Paste the spec, then:
 
 ## Step 4: Review (session C, fresh: the reviewer)
 
-Paste the spec and the actual result (the changed files or diff). **Do not paste the implementer's report.**
+Paste the spec and the actual result (the changed files or diff). If the reviewer can't run commands, also paste
+the test and check output you captured yourself. **Do not paste the implementer's report.**
 
 > You are the reviewer. You didn't write this. Find problems; don't approve by default and don't fix anything.
 > Check that it meets the spec, that the checks pass, and that nothing outside the spec changed.

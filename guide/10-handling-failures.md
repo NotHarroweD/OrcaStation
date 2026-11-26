@@ -33,8 +33,9 @@ flowchart TD
     B -- Yes --> D{"Did a fresh session<br/>with the exact failure fix it?"}
     D -- Yes --> E["Done"]
     D -- No --> F["Try one tier up"]
-    C --> G["Rerun"]
+    C --> G["Rerun in a fresh session"]
     F --> G
+    G -- "Fails again" --> A
 ```
 
 **The escalation rule:** fix the spec, then shrink the task, then restart in a fresh session, and only then move up a tier.

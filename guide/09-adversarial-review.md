@@ -11,7 +11,8 @@ quietly weakened assertions, scope creep, edge cases nobody wrote down.
 
 - **A fresh session.** No shared history with the implementer.
 - **It sees the spec and the real result.** Not the implementer's summary of what it did.
-  If the reviewer reads the builder's own account first, it tends to agree with it.
+  If the reviewer reads the builder's own account first, it tends to agree with it. In the Standard workflow the
+  report is committed on the same branch, so tell the reviewer not to open `docs/reports/`.
 - **Its job is to find problems.** "Is this good?" invites a yes. "What's wrong with this?" doesn't.
 
 The reviewer can be the same model as the implementer, the same model as the orchestrator, or a different one.
@@ -78,7 +79,9 @@ The reviewer's output goes to the orchestrator, who decides:
 - **Rewrite the spec** if the failure is really an ambiguity in the spec.
 - **Revisit the requirement** if the reviewer flagged a spec concern. That's a decision for you or the orchestrator.
 
-Reviews that find nothing should say what was tried. Only the orchestrator (or you) merges, and only after a review passes: one owner integrates. "Looks good" isn't a review.
+Only the orchestrator (or you) merges, and only after a review passes: one owner integrates.
+
+Reviews that find nothing should say what was tried. "Looks good" isn't a review.
 
 ## Do this
 

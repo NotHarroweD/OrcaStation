@@ -95,6 +95,9 @@ OrcaStation turns that into a process you can follow.
 | **Implementer** | Follows one spec and builds it | Lightest tier that does it reliably |
 | **Reviewer** | Independently audits the result against the spec | Strong tier, **fresh session** |
 
+New to this? Start the implementer one tier above your lightest model, so you can tell spec problems from model
+problems, then tune down. [Choosing tiers](guide/07-choosing-tiers.md) explains why.
+
 ## When to use OrcaStation
 
 ### Use it when
@@ -185,8 +188,9 @@ For dated examples with Claude and ChatGPT models, see [model examples](referenc
 
 ## FAQ
 
-**Do I need several different models?** No. One model in separate sessions still gives you fresh context and independent review.
-Using different tiers is what adds the token savings.
+**Do I need several different models?** No. One model in separate sessions still gives you fresh context and a review
+that doesn't share the builder's conversation. Using different tiers is what adds the token savings, and a different
+model as reviewer can catch mistakes the builder's model tends to miss.
 
 **Do I need special software?** No. It's a set of files and a way of working.
 
@@ -199,16 +203,17 @@ Using different tiers is what adds the token savings.
 ```
 OrcaStation/
 ├── README.md        You are here
-├── START.md         Entry point with copy-paste playbooks
-├── playbooks/       Step-by-step modes: Lite, new project, adopt, choose models
+├── START.md         Entry point: pick a mode, or hand it to an agent
 ├── CHEATSHEET.md    One-page summary
-├── LICENSE          MIT license
 ├── AGENTS.md        Drop-in instructions for agents
+├── playbooks/       Step-by-step modes: Lite, new project, adopt, choose models
 ├── guide/           The full guide, chapter by chapter
 ├── templates/       Spec and review templates
 ├── examples/        A worked example, from spec to accepted
 ├── reference/       Dated model examples
-└── assets/          Logo and diagrams
+├── assets/          Logo and diagrams
+├── CHANGELOG.md     What changed in each release
+└── LICENSE          MIT license
 ```
 
 In the [worked example](examples/inventory), every automated check passed and the work was still wrong.
@@ -216,11 +221,13 @@ An independent review caught it.
 
 ## Status
 
-First full draft. Start with the [guide index](guide/README.md), or jump to the [worked example](examples/inventory).
+**v1.0, the first public release.** Early testers have used it on real tasks, and it will keep improving from your reports.
+See the [changelog](CHANGELOG.md) for what's changed, and [releases](https://github.com/NotHarroweD/OrcaStation/releases)
+for stable versions to point your agents at.
 
 ## Help test OrcaStation
 
-OrcaStation is a first draft, and the most valuable thing you can give it is a real test. Try it on a task, then tell us what
+The most valuable thing you can give OrcaStation is a real test. Try it on a task, then tell us what
 worked and where you got stuck.
 
 **[Send a test report](https://github.com/NotHarroweD/OrcaStation/issues/new?template=test-report.yml)** (needs a free GitHub account),
@@ -233,9 +240,9 @@ If you try OrcaStation on a real project, we'd love to hear how it went.
 
 ## Contributors
 
-Thank you to everyone who has tested OrcaStation and shared feedback. Your input directly improves the benefit this resource provides to the community.
+Thank you to everyone who has tested OrcaStation and shared feedback. Every report makes it better for the whole community.
 
-- **ShinyStarSam**: First Tester/Feedback contributor.
+- **ShinyStarSam**: first tester and feedback contributor
 
 Want to be listed? Try OrcaStation on a real project and share what worked and what didn't, in the [Discord](https://discord.gg/GGszfGZg8a) or by opening a [test report](https://github.com/NotHarroweD/OrcaStation/issues/new?template=test-report.yml).
 

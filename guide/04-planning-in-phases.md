@@ -9,7 +9,8 @@ A **task** is one piece of a phase, sized so a single implementer session can co
 
 Plan in this order:
 
-1. **Phase 0: skeleton.** The repo, the `check` command, and one passing placeholder test.
+1. **Phase 0: skeleton.** The repo, the `check` command, and one passing placeholder test. You build this
+   yourself during setup (Chapter 3), so it's already done when planning starts and needs no spec.
 2. **Early phases: the thinnest working slice.** The simplest version of the whole feature.
 3. **Later phases: depth.** Edge cases, limits, polish, and persistence.
 
@@ -38,22 +39,26 @@ can run in parallel (Chapter 8).
 ```
 # Plan: Inventory system
 
-## Phase 0: Skeleton
-- T0.1 Project setup, `check` command, placeholder test
+## Phase 0: Skeleton (done during setup)
+- T0.1 Project setup, `check` command, placeholder test   DONE
 
 ## Phase 1: Core inventory
-- T1.1 Item and Inventory data types            (after T0.1)
-- T1.2 Add and remove items                     (after T1.1)
-- T1.3 Stack limits                             (after T1.2)
-- T1.4 Weight limits                            (after T1.2)
+- T1.1 Item and Inventory data types      (after T0.1)          SPEC-001
+- T1.2 Add and remove items               (after T1.1)          SPEC-002
+- T1.3 Stack limits                       (after T1.2)          SPEC-003
+- T1.4 Weight limits                      (after T1.2)          SPEC-004
 
 ## Phase 2: Persistence
-- T2.1 Save inventory to a file                 (after T1.3, T1.4)
-- T2.2 Load inventory from a file               (after T2.1)
+- T2.1 Save inventory to a file           (after T1.3, T1.4)
+- T2.2 Load inventory from a file         (after T2.1)
 ```
 
 T1.3 and T1.4 depend on the same thing but touch different rules, so they can run in parallel
 as long as they own different files.
+
+**Task IDs and spec IDs.** Task IDs (T1.3) show where a task sits in the plan. Spec IDs (SPEC-003) are numbered
+in the order specs are written. When you write a spec, add its ID next to the task in `plan.md`, as above,
+so anyone can go from one to the other. Phase 2 has no spec IDs yet because its specs haven't been written.
 
 ## Let the orchestrator do the planning
 

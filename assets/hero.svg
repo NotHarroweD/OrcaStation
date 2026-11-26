@@ -20,6 +20,6 @@
 <line x1="564" y1="175" x2="616" y2="175" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
 <text x="590" y="162" font-size="13" fill="#475569">result</text>
 <path d="M730 244 V300 H170 V248" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#a)"/>
-<text x="450" y="324" font-size="14" fill="#475569">findings: revise the spec, or move to the next task</text>
+<text x="450" y="324" font-size="14" fill="#475569">findings: accept, send back with fixes, or revise the spec</text>
 <text x="450" y="372" font-size="15" font-weight="600">A fresh session per task. State lives in files, not in chat.</text>
 </g></svg>

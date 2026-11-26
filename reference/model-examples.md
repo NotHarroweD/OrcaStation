@@ -1,6 +1,6 @@
 # Model examples
 
-**Last verified: November 22, 2026**, against each vendor's official model page (linked below).
+**Last verified: November 25, 2026**, against each vendor's official model page (linked below).
 
 Model lineups change quickly. Treat this page as a snapshot and check the vendors' own pages before relying on it.
 It keeps two things apart:
@@ -41,6 +41,17 @@ Official overview: <https://platform.claude.com/docs/en/models/overview>
 Official catalog: <https://developers.openai.com/api/docs/models>
 Model selection guide: <https://developers.openai.com/api/docs/guides/model-selection>
 
+## How these map to OrcaStation's tiers
+
+| Tier ([Chapter 7](../guide/07-choosing-tiers.md)) | Claude | ChatGPT / OpenAI |
+|---|---|---|
+| **Top** | Opus 5.5, with Fable 5.2 as a step above for the hardest work | GPT-6.2 Astra |
+| **Middle** | Sonnet 5.5 | GPT-6.2 Sol |
+| **Light** | Haiku 5.5 | GPT-6 Luna |
+
+This mapping is our judgment. GPT-6.1 Terra sits between Sol and Luna and is aimed at visual reasoning and computer use,
+so it isn't in the main table, but it's worth testing for UI-heavy tasks.
+
 ## OrcaStation's suggested starting points
 
 | Role | Claude | ChatGPT / OpenAI |
@@ -55,8 +66,10 @@ Model selection guide: <https://developers.openai.com/api/docs/guides/model-sele
 Using them for mechanical implementation is our suggestion to test, not vendor guidance. If tasks keep failing on well-written specs,
 move that kind of task up a tier.
 
-**Cost:** the top models cost noticeably more per token. For orchestration, the second tier at a high effort setting is often
-enough, so reserve the top model for your hardest planning. Check each vendor's pricing page, and measure before assuming.
+**Cost:** the top models cost noticeably more per token. Orchestration uses relatively few tokens, so the top tier is
+usually worth it there. If you're watching costs or usage limits, try the middle tier at a high effort setting for
+routine planning, and compare the spec quality you get (Chapter 11). Check each vendor's pricing page, and measure
+before assuming.
 
 **Mixing vendors:** a reviewer from a different vendor than the implementer can catch different problems.
 It's optional and adds setup work, so try it once your basic loop is stable.

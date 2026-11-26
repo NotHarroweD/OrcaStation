@@ -1,7 +1,9 @@
 # REVIEW-XXX: <short title>
+<!-- Round 2 and later: save as REVIEW-XXX-<round>.md -->
+
 
 You are the reviewer. You did not write this. Your job is to find problems, not to approve.
-You have the spec and the actual result. Do not rely on any report from the implementer.
+You have the spec and the actual result. Do not read any report from the implementer (don't open `docs/reports/`).
 
 ## Definition of done
 - [ ] Every required check passes (run them yourself)
@@ -9,12 +11,12 @@ You have the spec and the actual result. Do not rely on any report from the impl
 - [ ] Only allowed files changed
 - [ ] No tests deleted, weakened, or skipped
 - [ ] Working tree is clean
-- [ ] Commit message matches the spec
+- [ ] Commit message matches the spec (or `fix: SPEC-XXX review round N` in a fix round)
 
 ## Meets the spec
 <Does the result do what the spec asks, including implied edge cases?>
 
-## Verification quality
+## Test quality
 <For each key test: would it really notice if the behavior broke? Compare it with the spec's fails-if line. For non-automated acceptance checks: were they actually done, and were the criteria met?>
 
 ## Defects
