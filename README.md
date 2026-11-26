@@ -7,9 +7,9 @@
 **A model-agnostic guide and toolkit for orchestrating AI-assisted development.**
 Spend your expensive tokens on thinking, not typing.
 
-Maintained by the [AI Game Dev](https://aigamedevs.org) community.
+Maintained by HarroweD of the AI Game Dev community.
 
-[Website](https://aigamedevs.org) · [Discord](https://discord.gg/GGszfGZg8a) · [Start here](START.md) · [Guide](guide/README.md) · [Cheat sheet](CHEATSHEET.md) · [Worked example](examples/inventory)
+[Discord](https://discord.gg/GGszfGZg8a) · [Start here](START.md) · [Guide](guide/README.md) · [Cheat sheet](CHEATSHEET.md) · [Worked example](examples/inventory)
 
 ![The OrcaStation loop: orchestrator, implementer, reviewer](assets/hero.svg)
 
